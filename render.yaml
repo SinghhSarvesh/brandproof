@@ -7,7 +7,7 @@ services:
     branch: main
     dockerfilePath: ./Dockerfile
     dockerContext: .
-    dockerCommand: sh -c 'python seed.py && exec python start.py'
+    dockerCommand: sh render_start.sh
     healthCheckPath: /api/health
     envVars:
       - key: DATABASE_URL
