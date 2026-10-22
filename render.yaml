@@ -1,0 +1,36 @@
+services:
+  - type: web
+    name: brandproof
+    runtime: docker
+    plan: free
+    region: singapore
+    branch: main
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    dockerCommand: sh -c 'python seed.py && exec python start.py'
+    healthCheckPath: /api/health
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: brandproof-db
+          property: connectionString
+      - key: DEMO_PASSWORD
+        sync: false
+      - key: REVIEW_MODE
+        value: ai
+      - key: AI_PROVIDER_LABEL
+        value: Groq
+      - key: AI_BASE_URL
+        value: https://api.groq.com/openai/v1
+      - key: AI_MODEL
+        value: openai/gpt-oss-20b
+      - key: AI_API_KEY
+        sync: false
+
+databases:
+  - name: brandproof-db
+    plan: free
+    region: singapore
+    databaseName: brandproof
+    user: brandproof
+    ipAllowList: []

@@ -115,6 +115,8 @@ The adapter posts to `/chat/completions` using bearer authentication, a JSON obj
 
 ## Repository and deployment
 
+For the Render alternative, follow [Render deployment](docs/RENDER.md). The `render.yaml` Blueprint provisions the web app and database and prompts for secrets privately.
+
 Source repository: https://github.com/SinghhSarvesh/brandproof
 
 A public deployment is not yet available. Follow [Railway and Groq setup](docs/DEPLOYMENT.md); the repository includes the hosting configuration and a live AI smoke-check command.

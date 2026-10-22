@@ -20,8 +20,10 @@ from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, sessionmaker,
 
 from config import database_url
 
-if os.getenv("RAILWAY_ENVIRONMENT_ID") and not os.getenv("DATABASE_URL"):
-    raise RuntimeError("Set DATABASE_URL to the Railway PostgreSQL service reference")
+if (os.getenv("RAILWAY_ENVIRONMENT_ID") or os.getenv("RENDER")) and not os.getenv(
+    "DATABASE_URL"
+):
+    raise RuntimeError("Set DATABASE_URL to the hosted PostgreSQL service connection")
 DATABASE_URL = database_url(os.getenv("DATABASE_URL", "sqlite:///./brandproof.db"))
 engine = create_engine(
     DATABASE_URL,
