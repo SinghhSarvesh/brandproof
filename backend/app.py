@@ -18,7 +18,11 @@ from sqlalchemy import (
 )
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, sessionmaker, Session
 
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./brandproof.db")
+from config import database_url
+
+if os.getenv("RAILWAY_ENVIRONMENT_ID") and not os.getenv("DATABASE_URL"):
+    raise RuntimeError("Set DATABASE_URL to the Railway PostgreSQL service reference")
+DATABASE_URL = database_url(os.getenv("DATABASE_URL", "sqlite:///./brandproof.db"))
 engine = create_engine(
     DATABASE_URL,
     connect_args=(

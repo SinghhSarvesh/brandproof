@@ -14,4 +14,4 @@ COPY --from=frontend /web/dist ./frontend_dist
 RUN useradd --create-home appuser && chown -R appuser:appuser /app
 USER appuser
 EXPOSE 8000
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["python", "start.py"]
