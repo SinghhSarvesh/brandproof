@@ -1,4 +1,4 @@
-import hashlib, hmac, io, json, os, re, secrets, time
+import hashlib, hmac, io, json, logging, os, re, secrets, time
 from datetime import date
 from contextlib import asynccontextmanager
 from typing import Literal
@@ -439,6 +439,39 @@ class AIFinding(BaseModel):
     severity: Literal["low", "medium", "high"]
 
 
+def ai_failure_message(exc):
+    """Classify failures without exposing provider responses or submitted content."""
+    if isinstance(exc, httpx.HTTPStatusError):
+        status = exc.response.status_code
+        messages = {
+            401: "The AI provider rejected the API key. Check AI_API_KEY in Render.",
+            403: "The AI provider denied access. Check the key's permissions and model access.",
+            404: "The AI endpoint or model was not found. Check AI_BASE_URL and AI_MODEL.",
+            429: "The AI provider's rate or usage limit was reached. Check provider limits before retrying.",
+            400: "The AI provider rejected the request. Check the configured model and supported response format.",
+        }
+        reason = messages.get(
+            status, "The AI provider returned an error. Please retry later."
+        )
+        return f"AI_HTTP_{status}", reason
+    if isinstance(exc, httpx.TimeoutException):
+        return "AI_TIMEOUT", "The AI provider timed out. Please retry."
+    if isinstance(exc, httpx.RequestError):
+        return (
+            "AI_CONNECTION",
+            "Could not connect to the AI provider. Check AI_BASE_URL and retry.",
+        )
+    if not os.getenv("AI_API_KEY") or not os.getenv("AI_MODEL"):
+        return (
+            "AI_CONFIG",
+            "AI_API_KEY or AI_MODEL is missing from the service configuration.",
+        )
+    return (
+        "AI_INVALID_RESPONSE",
+        "The AI response could not be validated against the draft and approved sources. Please retry.",
+    )
+
+
 def semantic(revision, sources):
     key = os.getenv("AI_API_KEY")
     base = os.getenv("AI_BASE_URL", "https://api.openai.com/v1")
@@ -601,10 +634,12 @@ def review(id: int, u: User = Depends(user), s: Session = Depends(db)):
                     raise ValueError("Source budget exceeded")
                 results += semantic(rev, sources)
                 checks["semantic"] = "complete"
-            except Exception:
+            except Exception as exc:
                 checks["semantic"] = "failed"
                 status = "incomplete"
-                error = "AI review failed or returned unverifiable findings. Please retry; this is not a clean review."
+                code, message = ai_failure_message(exc)
+                logging.getLogger("brandproof.ai").warning("AI review failed: %s", code)
+                error = f"{message} [{code}] This review remains incomplete."
     elif mode != "rules_only":
         status = "incomplete"
         error = "Invalid review mode"
