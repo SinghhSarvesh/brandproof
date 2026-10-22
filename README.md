@@ -117,7 +117,7 @@ The adapter posts to `/chat/completions` using bearer authentication, a JSON obj
 
 Source repository: https://github.com/SinghhSarvesh/brandproof
 
-A public deployment is not yet available.
+A public deployment is not yet available. Follow [Railway and Groq setup](docs/DEPLOYMENT.md); the repository includes the hosting configuration and a live AI smoke-check command.
 
 The supplied Docker image serves the built React frontend and FastAPI on port 8000. Use a host that supports Python containers and PostgreSQL. Add HTTPS, platform secrets, database backups and ingress rate limits before exposing a judge deployment. Keep it synthetic-only until privacy controls are completed.
 
