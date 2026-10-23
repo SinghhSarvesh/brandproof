@@ -16,6 +16,8 @@ import {
   Search,
   MessageSquare,
   ChevronRight,
+  Zap,
+  PenLine,
 } from "lucide-react";
 import "./style.css";
 type Item = Record<string, any>;
@@ -48,6 +50,16 @@ function App() {
   const [notice, setNotice] = useState("");
   const [busy, setBusy] = useState(false);
   const [login, setLogin] = useState({ email: "", password: "" });
+  const [demoAccounts, setDemoAccounts] = useState<
+    { role: string; email: string; password: string }[]
+  >([]);
+  const [demoSelection, setDemoSelection] = useState("");
+  useEffect(() => {
+    fetch("/api/demo-accounts", { cache: "no-store" })
+      .then((r) => (r.ok ? r.json() : { accounts: [] }))
+      .then((data) => setDemoAccounts(data.accounts || []))
+      .catch(() => setDemoAccounts([]));
+  }, []);
   const [note, setNote] = useState("");
   const [exception, setException] = useState("");
   const [search, setSearch] = useState("");
@@ -198,6 +210,50 @@ function App() {
           <ShieldCheck size={36} />
           <h2>Welcome to BrandProof</h2>
           <p>Sign in to your brand workspace.</p>
+          {demoAccounts.length > 0 && (
+            <section className="demo-fill" aria-labelledby="demo-fill-heading">
+              <h3 id="demo-fill-heading">
+                <Zap size={17} aria-hidden="true" /> Quick demo fill
+              </h3>
+              <div className="demo-fill-grid">
+                {demoAccounts.map((account) => {
+                  const Icon =
+                    account.role === "manager"
+                      ? ShieldCheck
+                      : account.role === "creator"
+                        ? PenLine
+                        : FileCheck2;
+                  return (
+                    <button
+                      key={account.role}
+                      type="button"
+                      className={`demo-fill-button demo-${account.role}`}
+                      disabled={busy}
+                      onClick={() => {
+                        setLogin({
+                          email: account.email,
+                          password: account.password,
+                        });
+                        setError("");
+                        setDemoSelection(
+                          `${account.role[0].toUpperCase() + account.role.slice(1)} demo filled. Click Open workspace to sign in.`,
+                        );
+                      }}
+                    >
+                      <Icon size={22} aria-hidden="true" />
+                      <span>
+                        {account.role[0].toUpperCase() + account.role.slice(1)}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+              <p className="demo-fill-status" role="status">
+                {demoSelection ||
+                  "Choose a role to fill the demo email and password."}
+              </p>
+            </section>
+          )}
           <form
             onSubmit={(e) => {
               e.preventDefault();

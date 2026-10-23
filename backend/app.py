@@ -3,7 +3,7 @@ from datetime import date
 from contextlib import asynccontextmanager
 from typing import Literal
 import httpx
-from fastapi import FastAPI, Depends, HTTPException, UploadFile, File, Form
+from fastapi import Response, FastAPI, Depends, HTTPException, UploadFile, File, Form
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
@@ -180,6 +180,23 @@ app = FastAPI(title="BrandProof", lifespan=lifespan)
 class Login(BaseModel):
     email: str = Field(max_length=255)
     password: str = Field(max_length=256)
+
+
+@app.get("/api/demo-accounts")
+def demo_accounts(response: Response, s: Session = Depends(db)):
+    """Opt-in public credentials for synthetic demo accounts only."""
+    response.headers["Cache-Control"] = "no-store"
+    password = os.getenv("DEMO_PASSWORD", "")
+    accounts = []
+    if os.getenv("DEMO_QUICK_FILL") == "true" and len(password) >= 12:
+        for role in ("manager", "creator", "reviewer"):
+            email = role + "@brandproof.demo"
+            u = s.scalar(select(User).where(User.email == email))
+            if u and u.org == "northstar" and u.role == role and hmac.compare_digest(
+                u.password, password_hash(password, u.password.split(":")[0])
+            ):
+                accounts.append({"role": role, "email": email, "password": password})
+    return {"accounts": accounts}
 
 
 @app.post("/api/login")

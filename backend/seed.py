@@ -1,4 +1,4 @@
-"""Explicit, idempotent demo setup. No accounts are created during normal startup."""
+"""Idempotent demo setup; public demo mode syncs synthetic account passwords."""
 
 import os
 from sqlalchemy import select
@@ -13,7 +13,8 @@ def seed():
     with SessionLocal() as s:
         for role in ["manager", "creator", "reviewer"]:
             email = role + "@brandproof.demo"
-            if not s.scalar(select(User).where(User.email == email)):
+            existing = s.scalar(select(User).where(User.email == email))
+            if not existing:
                 s.add(
                     User(
                         org="northstar",
@@ -22,6 +23,10 @@ def seed():
                         password=password_hash(password),
                     )
                 )
+            elif os.getenv("DEMO_QUICK_FILL") == "true":
+                if existing.org != "northstar" or existing.role != role:
+                    raise SystemExit("Demo account identity mismatch; refusing password update.")
+                existing.password = password_hash(password)
         s.flush()
         u = s.scalar(select(User).where(User.email == "manager@brandproof.demo"))
         if not s.scalar(
@@ -92,7 +97,7 @@ def seed():
                 )
         s.commit()
     print(
-        "Demo prepared: manager@brandproof.demo, creator@brandproof.demo, reviewer@brandproof.demo. Existing passwords are unchanged."
+        "Demo prepared: manager@brandproof.demo, creator@brandproof.demo, reviewer@brandproof.demo. Passwords sync only when DEMO_QUICK_FILL=true."
     )
 
 

@@ -43,7 +43,7 @@ Open http://localhost:8000. Accounts are:
 - `creator@brandproof.demo`
 - `reviewer@brandproof.demo`
 
-All initially use the locally configured `DEMO_PASSWORD`. Re-running the seed does not reset existing passwords. They are synthetic demonstration accounts, not production identities. Stop with `docker compose down`; the database volume is preserved. Do not add `-v` unless you intend to erase the demo database.
+All initially use the locally configured `DEMO_PASSWORD`. Re-running the seed does not reset existing passwords unless `DEMO_QUICK_FILL=true`. This opt-in public demo mode syncs only the three Northstar demo passwords to `DEMO_PASSWORD` and shows Quick Demo Fill buttons on the login page. The buttons publish these synthetic demo credentials to visitors and fill the form without submitting it. Keep this mode disabled for private workspaces. They are synthetic demonstration accounts, not production identities. Stop with `docker compose down`; the database volume is preserved. Do not add `-v` unless you intend to erase the demo database.
 
 Docker/PostgreSQL configuration is provided but has not been executed in the build environment. The API tests used SQLite. Validate the PostgreSQL deployment before submission.
 
