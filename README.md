@@ -1,133 +1,108 @@
-# BrandProof
+# BrandProof — Round 3: The Finish
 
-Evidence-led brand content review with revision-specific human approval.
+Evidence-led brand review with controlled corrections and approval of an exact revision.
 
-**TechCircuit · Round 2 · Team RAKSHITA7050**
+**[Open the working product](https://brandproof.onrender.com/)** · **[Source repository](https://github.com/SinghhSarvesh/brandproof)** · Team **RAKSHITA7050**, TechCircuit / Inkloom AI problem statement.
 
-A working prototype for reviewing campaign content against approved brand sources. This milestone covers the core review and approval workflow; see [implementation status](docs/STATUS.md) for tested capabilities and remaining work. Use synthetic materials while privacy controls are being completed.
+## Try it as a judge
 
-## What works
+The free service may take a short time to wake up. Choose **Creator** under Quick Demo Fill and select **Open workspace**. These are public, shared synthetic demo accounts: never enter personal, confidential or real client content.
 
-- Separate creator, manager and reviewer accounts; server-side role and organisation checks.
-- Approved fact, terminology, tone, claim, dimension and logo-hash source records, with versions, dates, scope and confirmation.
-- Guideline PDF text import for manual rule definition and confirmation.
-- Text submissions, immutable content revisions, comments and review history.
-- Narrow deterministic numeric-claim, phrase, terminology, dimension, exact standalone-logo hash and alt-text metadata checks.
-- Evidence-linked findings and manual correction editing. Rejection reasons are saved.
-- Review requests, human approval, high-severity exception reasons, self-approval prevention and stale-revision rejection.
-- Source snapshot changes mark existing approvals for revalidation.
-- Text-PDF extraction and PNG/JPEG OCR, with explicit extraction failures.
-- A hosted chat-completions AI adapter with consent, source/quotation validation and fail-closed results. Live provider integration is not yet verified.
-- Insights based on stored findings and rejected findings, plus audit events.
+1. Choose **New review**. Title: `Northstar launch`. Purpose: `Announce Northstar One`. Draft: `India's No. 1 device. Enjoy 20 hours of battery life. Meet NS1.`
+2. Consent to the displayed AI provider, save and **Run checks**. Inspect the source quotations and ranked evidence. Incomplete checks cannot be approved.
+3. Open **Accept or edit correction**, inspect the replacement, **Preview exact change**, then **Accept and save new revision**. Each accepted edit requires fresh checks. You can also edit the whole draft to `Meet Northstar One. Enjoy up to 12 hours of battery life.`
+4. Run checks and **Request approval**. Sign out; choose **Reviewer**. Open the awaiting-review item, inspect evidence, add a reason and approve. High-severity findings require an explicit exception reason.
+5. Sign back in as Creator and edit the approved item: it returns to draft. As Manager, inspect Brand sources, Insights, Activity and the revalidation inbox. Superseding relevant evidence requires a fresh decision; unrelated evidence does not invalidate new-format approvals.
 
-The default `rules_only` mode is visibly labelled. It does **not** evaluate semantic tone or paraphrased claims. A rules-only approval records that limited review mode. Set `REVIEW_MODE=ai` only after configuring and validating the model provider. Failed AI review cannot proceed to approval.
+Demo identities: `creator@brandproof.demo`, `reviewer@brandproof.demo`, `manager@brandproof.demo`. Quick Demo Fill supplies public demo credentials. No social post or video submission is required by the supplied final-round brief.
 
-## Run with Docker and PostgreSQL
+## Built features
 
-Install Docker Desktop and start it. From the project directory:
+- Role and organisation checks; salted password hashes, expiring sessions and logout revocation.
+- Versioned facts, terms, tone, claims, dimensions and standalone-logo hashes, scoped by channel and validity dates.
+- Text/PDF submissions, PNG/JPEG extraction, OCR, image dimensions, logo hash comparison and alt-text presence checks.
+- Ranked lexical evidence with structured-rule precedence, versioned citations and explicit conflicting-fact warnings.
+- Deterministic checks plus a hosted semantic-review adapter; consent, bounded provider timeout and validation of exact draft/source quotes.
+- Exact-span correction preview, editable replacements, accept/reject actions, numeric/name/qualifier safeguards and immutable revisions.
+- Review requests, high-severity exceptions, self-approval prevention, revision history and inspectable approval evidence.
+- Relevant-source revalidation, durable in-app notifications with per-user read state, insights and application audit events.
+- Empty-input rejection, duplicate initial-save keys, repeat-review reuse, repeat approval-request safety, stale-edit rejection, refresh recovery and visible failure states.
+
+## Run locally — Python 3.12 and Node 22
+
+Linux/macOS:
 
 ```sh
-cp .env.example .env
+git clone https://github.com/SinghhSarvesh/brandproof.git
+cd brandproof
+python3 -m venv .venv
+. .venv/bin/activate
+pip install -r backend/requirements.txt
+export DEMO_PASSWORD='local-synthetic-demo-password'
+export DEMO_QUICK_FILL=true
+export REVIEW_MODE=rules_only
+(cd backend && python seed.py)
+(cd frontend && npm ci)
+python scripts/dev.py
 ```
 
-On Windows PowerShell use `Copy-Item .env.example .env` instead. Edit `.env` locally: set unique `POSTGRES_PASSWORD` and `DEMO_PASSWORD` values of at least 12 characters. Use URL-safe alphanumeric characters for the database password because Compose interpolates it into a database URL. Never commit `.env`.
+Windows PowerShell:
+
+```powershell
+git clone https://github.com/SinghhSarvesh/brandproof.git
+cd brandproof
+py -3.12 -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r backend/requirements.txt
+$env:DEMO_PASSWORD='local-synthetic-demo-password'
+$env:DEMO_QUICK_FILL='true'
+$env:REVIEW_MODE='rules_only'
+cd backend
+python seed.py
+cd ../frontend
+npm ci
+cd ..
+python scripts/dev.py
+```
+
+Open **http://localhost:4173**. SQLite is used locally unless `DATABASE_URL` is set. Install Tesseract and put it on PATH for image OCR; otherwise the UI correctly reports incomplete OCR. Hosted AI is optional for local setup; rules-only mode is visibly labelled and does not claim semantic coverage. Local Python does not auto-read `.env`.
+
+## Docker and PostgreSQL
+
+Install/start Docker. Copy `.env.example` to `.env` (`Copy-Item` on PowerShell), set unique `POSTGRES_PASSWORD` and `DEMO_PASSWORD`, then:
 
 ```sh
 docker compose up --build -d
 docker compose exec app python seed.py
 ```
 
-Open http://localhost:8000. Accounts are:
+Open **http://localhost:8000**. Stop with `docker compose down`. Avoid `-v` unless intentionally deleting the database volume. PostgreSQL passwords in Compose URLs should be URL-safe alphanumeric. Public Quick Demo Fill must remain disabled for private deployments. The Docker image includes Tesseract and serves the built UI with FastAPI.
 
-- `manager@brandproof.demo`
-- `creator@brandproof.demo`
-- `reviewer@brandproof.demo`
+## AI setup
 
-All initially use the locally configured `DEMO_PASSWORD`. Re-running the seed does not reset existing passwords unless `DEMO_QUICK_FILL=true`. This opt-in public demo mode syncs only the three Northstar demo passwords to `DEMO_PASSWORD` and shows Quick Demo Fill buttons on the login page. The buttons publish these synthetic demo credentials to visitors and fill the form without submitting it. Keep this mode disabled for private workspaces. They are synthetic demonstration accounts, not production identities. Stop with `docker compose down`; the database volume is preserved. Do not add `-v` unless you intend to erase the demo database.
+Set backend-only environment variables: `REVIEW_MODE=ai`, `AI_PROVIDER_LABEL`, `AI_BASE_URL`, `AI_MODEL`, `AI_API_KEY`. The existing deployment uses Groq's compatible endpoint and `openai/gpt-oss-20b`; check live review records for the model actually used. Keep credentials in platform secrets, never source code or frontend variables. Only synthetic text, purpose, audience and selected sources are sent after consent. Provider failure or invalid evidence produces an incomplete review, not a clean result.
 
-Docker/PostgreSQL configuration is provided but has not been executed in the build environment. The API tests used SQLite. Validate the PostgreSQL deployment before submission.
-
-## Run without Docker
-
-Python 3.12 and Node 22 or later are recommended. From the root on Windows PowerShell:
-
-```powershell
-py -3.12 -m venv .venv
-.\.venv\Scripts\Activate.ps1
-pip install -r backend/requirements.txt
-$env:DEMO_PASSWORD = 'choose-a-local-demo-password'
-cd backend
-python seed.py
-cd ..
-cd frontend
-npm ci
-cd ..
-python scripts/dev.py
-```
-
-On Linux/macOS:
-
-```sh
-python3 -m venv .venv
-. .venv/bin/activate
-pip install -r backend/requirements.txt
-export DEMO_PASSWORD='choose-a-local-demo-password'
-(cd backend && python seed.py)
-(cd frontend && npm ci)
-python scripts/dev.py
-```
-
-Open http://localhost:4173. Development uses SQLite in `backend/brandproof.db` unless `DATABASE_URL` is set. Install Tesseract separately and put it on PATH to run image OCR; without it image reviews remain incomplete. Docker includes it. The `.env` file is consumed by Docker Compose, not automatically by the local Python process; set local environment variables explicitly.
-
-## Verify
+## Tests and evaluation
 
 ```sh
 cd backend
 python -m pytest tests -q
+python evaluate.py --output ../docs/evaluation-rules.json
 cd ../frontend
 npm run build
 ```
 
-The workflow tests cover success, invalidation, exceptions, role checks, tenant isolation, consent, missing/expired sources, invalid citations, review failures, idempotency, upload rejection, extraction and logout. See `docs/STATUS.md` for verified results and gaps.
+GitHub Actions additionally provisions **PostgreSQL 16**, runs concurrency tests, builds the UI and runs Playwright browser journeys against an isolated synthetic app. CI publishes browser traces/screenshots and the evaluation report. See [Testing](docs/TESTING.md) for current evidence and limitations.
 
-## Demo in three accounts
+The 40-case synthetic fixture contains 10 controls, 20 clear issues and 10 ambiguous cases. The 20 correction pairs check exact edits and unsafe replacements. These fixtures are not independent customer validation or proof of general AI accuracy. Do not present rules-only scores as semantic scores.
 
-1. Sign in as creator. Create a social post with purpose “Announce Northstar One” and text: `India’s No. 1 device. Enjoy 20 hours of battery life. Meet NS1.`
-2. Save, then run checks. Inspect separate ranking, battery and naming findings and their source evidence.
-3. Edit the draft to `Meet Northstar One. Enjoy up to 12 hours of battery life.` Save a new revision, rerun checks and request approval.
-4. Sign out and sign in as reviewer. Open the content, write a decision reason and approve.
-5. Sign in as creator and edit it again. The new revision is a draft requiring fresh review.
-6. Sign in as manager. Inspect insights/activity and create a replacement battery source. Approvals associated with the earlier source snapshot require revalidation.
+## Documentation
 
-## AI configuration
-
-Configure these variables on the backend only:
-
-```text
-REVIEW_MODE=ai
-AI_PROVIDER_LABEL=<actual provider name>
-AI_BASE_URL=<provider's supported chat-completions base URL>
-AI_MODEL=<available model supporting JSON object responses>
-AI_API_KEY=<secret from provider dashboard>
-```
-
-The adapter posts to `/chat/completions` using bearer authentication, a JSON object response format and temperature 0. Verify provider/model compatibility and retention terms before enabling. Only text, campaign purpose, audience and applicable active source passages are sent. Image pixels are not sent; OCR text currently receives deterministic checks only. Do not paste API keys into chat or put them in frontend variables. API call failures, malformed data or invalid citations produce incomplete reviews.
-
-## Repository and deployment
-
-For the Render alternative, follow [Render deployment](docs/RENDER.md). The `render.yaml` Blueprint provisions the web app and database and prompts for secrets privately.
-
-Source repository: https://github.com/SinghhSarvesh/brandproof
-
-A public deployment is not yet available. Follow [Railway and Groq setup](docs/DEPLOYMENT.md); the repository includes the hosting configuration and a live AI smoke-check command.
-
-The supplied Docker image serves the built React frontend and FastAPI on port 8000. Use a host that supports Python containers and PostgreSQL. Add HTTPS, platform secrets, database backups and ingress rate limits before exposing a judge deployment. Keep it synthetic-only until privacy controls are completed.
-
-## Project records
-
+- [Round 3 changes and limitations](docs/ROUND3.md)
 - [Architecture](docs/ARCHITECTURE.md)
-- [Implementation status and remaining work](docs/STATUS.md)
-- [Contributions](docs/CONTRIBUTIONS.md)
-- [Tool and AI assistance disclosure](docs/DISCLOSURES.md)
+- [Privacy, security, accessibility and responsible design](docs/RESPONSIBLE_DESIGN.md)
+- [Testing and reproduction](docs/TESTING.md)
+- [Participants and contributions](docs/CONTRIBUTIONS.md)
+- [Submission checklist and roadmap](docs/SUBMISSION.md)
 
-Evaluation targets are documented separately from measured results. Preserve real commit history during the official build window.
+Render deploys this repository's `main` branch. No separate service is required. `/api/health` reports the release and deployment commit when available. Only call the release verified after the deployment is live and the main journey passes against it.

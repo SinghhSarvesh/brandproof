@@ -3,6 +3,17 @@ on: [push, pull_request]
 jobs:
   test:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: brandproof
+          POSTGRES_PASSWORD: test-only-password
+          POSTGRES_DB: brandproof_test
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U brandproof -d brandproof_test"
+          --health-interval 5s --health-timeout 5s --health-retries 10
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -11,6 +22,16 @@ jobs:
       - run: pip install -r backend/requirements.txt
       - run: python -m pytest tests -q
         working-directory: backend
+      - run: python -m pytest tests -q
+        working-directory: backend
+        env:
+          TEST_DATABASE_URL: postgresql+psycopg://brandproof:test-only-password@localhost:5432/brandproof_test
+      - run: python evaluate.py --output ../docs/evaluation-rules.json
+        working-directory: backend
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rules-evaluation
+          path: docs/evaluation-rules.json
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
@@ -18,3 +39,25 @@ jobs:
           cache-dependency-path: frontend/package-lock.json
       - run: npm ci && npm run build
         working-directory: frontend
+
+      - run: npx playwright install --with-deps chromium
+        working-directory: frontend
+      - name: Start isolated browser test app
+        run: |
+          ln -s ../frontend/dist backend/frontend_dist
+          cd backend
+          python seed.py
+          nohup python -m uvicorn app:app --host 127.0.0.1 --port 8010 > /tmp/brandproof-browser.log 2>&1 &
+        env:
+          DEMO_PASSWORD: isolated-browser-test-password
+          DEMO_QUICK_FILL: 'true'
+          REVIEW_MODE: rules_only
+      - run: npx playwright test
+        working-directory: frontend
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: browser-test-evidence
+          path: |
+            frontend/playwright-report/
+            frontend/test-results/

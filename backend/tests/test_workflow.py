@@ -1,7 +1,7 @@
-import io, json
+import io, json, os, uuid
 import pytest
 from fastapi.testclient import TestClient
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.pool import StaticPool
 import app as a
@@ -9,9 +9,18 @@ import app as a
 
 @pytest.fixture()
 def ctx(monkeypatch):
-    engine = create_engine(
-        "sqlite://", connect_args={"check_same_thread": False}, poolclass=StaticPool
-    )
+    pg_url = os.getenv("TEST_DATABASE_URL")
+    admin = None
+    if pg_url:
+        schema = "test_" + uuid.uuid4().hex
+        admin = create_engine(pg_url)
+        with admin.begin() as connection:
+            connection.execute(text(f'CREATE SCHEMA "{schema}"'))
+        engine = create_engine(pg_url, connect_args={"options": f"-csearch_path={schema}"})
+    else:
+        engine = create_engine(
+            "sqlite://", connect_args={"check_same_thread": False}, poolclass=StaticPool
+        )
     factory = sessionmaker(engine, expire_on_commit=False)
     monkeypatch.setattr(a, "engine", engine)
     monkeypatch.setattr(a, "SessionLocal", factory)
@@ -46,6 +55,11 @@ def ctx(monkeypatch):
             assert r.status_code == 200
             headers[role] = {"Authorization": "Bearer " + r.json()["token"]}
         yield c, headers
+    engine.dispose()
+    if admin:
+        with admin.begin() as connection:
+            connection.execute(text(f'DROP SCHEMA "{schema}" CASCADE'))
+        admin.dispose()
 
 
 def source(c, h, **kw):

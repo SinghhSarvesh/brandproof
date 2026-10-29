@@ -9,3 +9,5 @@ dist/
 frontend_dist/
 *.tsbuildinfo
 .DS_Store
+playwright-report/
+test-results/

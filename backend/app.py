@@ -6,7 +6,7 @@ import httpx
 from fastapi import Response, FastAPI, Depends, HTTPException, UploadFile, File, Form
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from fastapi.staticfiles import StaticFiles
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 from sqlalchemy import (
     create_engine,
     String,
@@ -19,6 +19,7 @@ from sqlalchemy import (
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, sessionmaker, Session
 
 from config import database_url
+from evidence import retrieve, conflicts
 
 if (os.getenv("RAILWAY_ENVIRONMENT_ID") or os.getenv("RENDER")) and not os.getenv(
     "DATABASE_URL"
@@ -168,6 +169,39 @@ def snapshot(sources):
     return digest(json.dumps(sorted(sources, key=lambda x: x["id"]), sort_keys=True))
 
 
+def evidence_for(s, u, rev):
+    query = dict(rev)
+    if rev.get('attachment_id'):
+        attachment = get(s, u, rev['attachment_id'], 'attachment').value()
+        query['text'] += ' ' + attachment.get('text', '')
+    return retrieve(query, current_sources(s, u))
+
+
+def revision_snapshot(s, u, rev):
+    return snapshot([x['source'] for x in evidence_for(s, u, rev)])
+
+
+def approval_stale(s, u, sub):
+    if sub['status'] not in ('approved', 'awaiting_review', 'revalidation_required'):
+        return False
+    rev = get(s, u, sub['latest_revision'], 'revision').value()
+    # Old approvals retain the conservative policy until freshly reviewed.
+    snap = revision_snapshot(s, u, rev) if sub.get('dependency_version') == 2 else snapshot(current_sources(s, u))
+    return sub.get('source_snapshot') != snap
+
+
+def revalidate(s, u):
+    lock_org(s, u)
+    for item in rows(s, u, 'submission'):
+        if item['status'] in ('approved', 'awaiting_review') and approval_stale(s, u, item):
+            record = get(s, u, item['id'], 'submission', True)
+            update(record, status='revalidation_required')
+            insert(s, u, 'notification', {'submission_id': item['id'], 'revision_id': item['latest_revision'],
+                   'owner': item['owner'], 'message': 'Applicable evidence changed or expired. Run checks and request a new decision.',
+                   'at': int(time.time()), 'read_by': []})
+            audit(s, u, 'source_revalidation_required', item['id'])
+
+
 @asynccontextmanager
 async def lifespan(app):
     Base.metadata.create_all(engine)
@@ -241,10 +275,19 @@ def me(u: User = Depends(user)):
 
 @app.get("/api/health")
 def health():
-    return {"status": "ok"}
+    return {"status": "ok", "release": "round3-finish", "commit": os.getenv("RENDER_GIT_COMMIT", "local")}
 
 
-class SourceInput(BaseModel):
+class NonBlankModel(BaseModel):
+    @field_validator('*', mode='after')
+    @classmethod
+    def reject_blank_required(cls, value, info):
+        if info.field_name in {'title', 'text', 'purpose', 'audience', 'channel', 'reason'} and isinstance(value, str) and not value.strip():
+            raise ValueError('This field cannot be blank')
+        return value
+
+
+class SourceInput(NonBlankModel):
     title: str = Field(min_length=1, max_length=150)
     kind: Literal["fact", "term", "tone", "claim", "dimension", "logo"]
     text: str = Field(min_length=1, max_length=8000)
@@ -293,11 +336,12 @@ def add_source(b: SourceInput, u: User = Depends(user), s: Session = Depends(db)
         s, u, "source", {**b.model_dump(), "version": version, "owner": u.email}
     )
     audit(s, u, "source_created", result["id"])
+    revalidate(s, u)
     s.commit()
     return result
 
 
-class Draft(BaseModel):
+class Draft(NonBlankModel):
     title: str = Field(min_length=1, max_length=150)
     text: str = Field(min_length=1, max_length=20000)
     purpose: str = Field(min_length=1, max_length=500)
@@ -307,6 +351,8 @@ class Draft(BaseModel):
     image_purpose: Literal["informative", "decorative", "functional"] = "informative"
     alt_text: str = Field(default="", max_length=1000)
     ai_consent: bool = False
+    expected_revision_id: int | None = None
+    request_id: str = Field(default="", max_length=100)
 
 
 def new_revision(s, u, sub, b):
@@ -325,7 +371,7 @@ def new_revision(s, u, sub, b):
             "created_at": int(time.time()),
         },
     )
-    update(sub, latest_revision=rev["id"], status="draft")
+    update(sub, title=b.title, latest_revision=rev["id"], status="draft")
     audit(s, u, "revision_created", rev["id"])
     return rev
 
@@ -333,6 +379,13 @@ def new_revision(s, u, sub, b):
 @app.post("/api/submissions")
 def submit(b: Draft, u: User = Depends(user), s: Session = Depends(db)):
     require(u, "creator", "manager")
+    lock_org(s, u)
+    if b.request_id:
+        prior = next((x for x in rows(s, u, 'operation') if x.get('request_id') == b.request_id and x.get('actor') == u.id), None)
+        if prior:
+            if prior['input_hash'] != digest(b.model_dump_json()):
+                raise HTTPException(409, 'This save key was already used for different content. Start a new review.')
+            return get(s, u, prior['submission_id'], 'submission').value()
     r = Record(
         org=u.org,
         kind="submission",
@@ -348,25 +401,28 @@ def submit(b: Draft, u: User = Depends(user), s: Session = Depends(db)):
     s.add(r)
     s.flush()
     new_revision(s, u, r, b)
+    if b.request_id:
+        insert(s, u, 'operation', {'request_id': b.request_id, 'actor': u.id, 'input_hash': digest(b.model_dump_json()), 'submission_id': r.id})
     s.commit()
     return r.value()
 
 
 @app.get("/api/submissions")
 def submissions(u: User = Depends(user), s: Session = Depends(db)):
+    revalidate(s, u)
     data = rows(s, u, "submission")
-    snap = snapshot(current_sources(s, u))
-    for item in data:
-        if item["status"] == "approved" and item.get("source_snapshot") != snap:
-            item["status"] = "revalidation_required"
+    s.commit()
     return data
 
 
 @app.post("/api/submissions/{id}/revisions")
 def revise(id: int, b: Draft, u: User = Depends(user), s: Session = Depends(db)):
+    lock_org(s, u)
     sub = get(s, u, id, "submission", True)
     if sub.value()["owner"] != u.id:
         raise HTTPException(403, "Only the creator can revise this submission")
+    if b.expected_revision_id is not None and b.expected_revision_id != sub.value()["latest_revision"]:
+        raise HTTPException(409, "The draft changed; reload before saving")
     result = new_revision(s, u, sub, b)
     s.commit()
     return result
@@ -374,16 +430,14 @@ def revise(id: int, b: Draft, u: User = Depends(user), s: Session = Depends(db))
 
 @app.get("/api/submissions/{id}")
 def detail(id: int, u: User = Depends(user), s: Session = Depends(db)):
+    revalidate(s, u)
     sub = get(s, u, id, "submission").value()
     revisions = [x for x in rows(s, u, "revision") if x["submission_id"] == id]
     ids = {x["id"] for x in revisions}
     sub["revisions"] = revisions
     for kind in ["review", "comment", "approval", "decision"]:
         sub[kind + "s"] = [x for x in rows(s, u, kind) if x.get("revision_id") in ids]
-    if sub["status"] == "approved" and sub.get("source_snapshot") != snapshot(
-        current_sources(s, u)
-    ):
-        sub["status"] = "revalidation_required"
+    s.commit()
     return sub
 
 
@@ -440,7 +494,7 @@ def deterministic(text, sources):
                                     m.group(),
                                     source,
                                     "The numeric claim differs from the approved fact. Review the full statement and its qualifiers.",
-                                    source["text"],
+                                    ("up to " if "up to" in source["text"].lower() and not sentence[:m.start()].lower().endswith("up to ") else "") + expected.group(),
                                 )
                             )
     return out
@@ -559,12 +613,12 @@ def review(id: int, u: User = Depends(user), s: Session = Depends(db)):
         raise HTTPException(403, "Only the creator can run a review")
     if sub.value()["latest_revision"] != id:
         raise HTTPException(409, "Review the latest revision")
-    sources = [
-        x for x in current_sources(s, u) if x["scope"] in ("all", rev["channel"])
-    ]
+    ranked = evidence_for(s, u, rev)
+    sources = [x['source'] for x in ranked]
+    source_conflicts = conflicts(sources)
     mode = os.getenv("REVIEW_MODE", "rules_only")
-    snap = snapshot(current_sources(s, u))
-    key = digest(json.dumps([id, snap, mode, os.getenv("AI_MODEL", "")]))
+    snap = snapshot(sources)
+    key = digest(json.dumps([id, snap, mode, os.getenv("AI_MODEL", ""), "round3-v2"]))
     existing = next(
         (
             r
@@ -660,6 +714,9 @@ def review(id: int, u: User = Depends(user), s: Session = Depends(db)):
     elif mode != "rules_only":
         status = "incomplete"
         error = "Invalid review mode"
+    if source_conflicts:
+        status = "incomplete"
+        error = "Conflicting approved facts require manager resolution before approval."
     unique = []
     seen = set()
     for f in results:
@@ -681,7 +738,13 @@ def review(id: int, u: User = Depends(user), s: Session = Depends(db)):
             "error": error,
             "mode": mode,
             "model": os.getenv("AI_MODEL", ""),
-            "prompt_version": "1",
+            "prompt_version": "2",
+            "dependency_version": 2,
+            "source_dependencies": sources,
+            "retrieval": [{"source_id": x['source']['id'], "title": x['source']['title'],
+                           "version": x['source']['version'], "passage": x['source']['text'],
+                           "score": x['score'], "reason": x['reason']} for x in ranked],
+            "conflicts": source_conflicts,
             "input_hash": digest(rev["text"]),
             "at": int(time.time()),
         },
@@ -691,7 +754,7 @@ def review(id: int, u: User = Depends(user), s: Session = Depends(db)):
     return result
 
 
-class Note(BaseModel):
+class Note(NonBlankModel):
     revision_id: int
     text: str = Field(min_length=1, max_length=2000)
 
@@ -706,7 +769,7 @@ def comment(b: Note, u: User = Depends(user), s: Session = Depends(db)):
     return r
 
 
-class Decision(BaseModel):
+class Decision(NonBlankModel):
     review_id: int
     index: int
     action: Literal["accepted", "rejected"]
@@ -717,7 +780,10 @@ class Decision(BaseModel):
 def decision(b: Decision, u: User = Depends(user), s: Session = Depends(db)):
     run = get(s, u, b.review_id, "review").value()
     rev = get(s, u, run["revision_id"], "revision").value()
-    sub = get(s, u, rev["submission_id"], "submission").value()
+    lock_org(s, u)
+    sub = get(s, u, rev["submission_id"], "submission", True).value()
+    if sub["latest_revision"] != rev["id"]:
+        raise HTTPException(409, "This finding belongs to an older revision")
     if sub["owner"] != u.id:
         raise HTTPException(403, "Only the creator can decide on suggestions")
     if not 0 <= b.index < len(run["findings"]):
@@ -730,6 +796,107 @@ def decision(b: Decision, u: User = Depends(user), s: Session = Depends(db)):
     )
     s.commit()
     return r
+
+
+class Correction(NonBlankModel):
+    review_id: int
+    index: int = Field(ge=0)
+    revision_id: int
+    start: int = Field(ge=0)
+    replacement: str = Field(max_length=2000)
+    reason: str = Field(min_length=1, max_length=1000)
+
+
+def prepare_correction(b, u, s):
+    lock_org(s, u)
+    run = get(s, u, b.review_id, "review").value()
+    rev = get(s, u, b.revision_id, "revision").value()
+    sub = get(s, u, rev['submission_id'], 'submission', True)
+    if sub.value()['owner'] != u.id:
+        raise HTTPException(403, "Only the creator can apply corrections")
+    if run['revision_id'] != b.revision_id:
+        raise HTTPException(409, "This finding belongs to another revision")
+    verify_review(s, u, sub.value(), b.revision_id, run)
+    if b.index >= len(run['findings']):
+        raise HTTPException(422, "Unknown finding")
+    f = run['findings'][b.index]
+    quote = f['quote']
+    if f['category'] in ('dimensions', 'asset', 'accessibility') or not quote or rev['text'][b.start:b.start + len(quote)] != quote:
+        raise HTTPException(409, "The selected span does not match the finding in this draft")
+    replacement = b.replacement
+    if replacement == quote:
+        raise HTTPException(422, "The correction does not change the draft")
+    sources = [x['source'] for x in evidence_for(s, u, rev)]
+    src = next((x for x in sources if x['id'] == f['source_id']), None)
+    if not src:
+        raise HTTPException(409, "The supporting evidence is no longer available")
+    # Numeric changes must be grounded in this finding's source, not unrelated facts.
+    numbers = lambda t: set(re.findall(r"\d+(?:\.\d+)?", t))
+    if numbers(replacement) - numbers(quote) - numbers(src['text']) - numbers(src['replacement']):
+        raise HTTPException(422, "The correction introduces a number unsupported by this source")
+    if src['kind'] == 'term' and src['replacement'] and src['replacement'] not in replacement:
+        raise HTTPException(422, "Keep the approved product name in the correction")
+    context = rev['text'][max(0, b.start - 20):b.start] + replacement
+    for term_source in sources:
+        name = term_source.get('replacement', '')
+        if term_source['kind'] == 'term' and name and name in quote and name not in replacement:
+            raise HTTPException(422, 'Keep the approved product name in the correction')
+    for qualifier in ('up to', 'at least', 'subject to'):
+        if numbers(replacement) and qualifier in src['text'].lower() and qualifier not in context.lower():
+            raise HTTPException(422, "Keep the approved qualifying language: " + qualifier)
+    after = rev['text'][:b.start] + replacement + rev['text'][b.start + len(quote):]
+    draft = Draft.model_validate({**rev, 'text': after})
+    if len(after.split()) > 2000:
+        raise HTTPException(422, "Draft limit is 2,000 words")
+    return sub, rev, draft, quote
+
+
+@app.post('/api/corrections/preview')
+def preview_correction(b: Correction, u: User = Depends(user), s: Session = Depends(db)):
+    sub, rev, draft, quote = prepare_correction(b, u, s)
+    return {'before': rev['text'], 'after': draft.text, 'removed': quote, 'inserted': b.replacement,
+            'start': b.start, 'revision_id': rev['id']}
+
+
+@app.post('/api/corrections/apply')
+def apply_correction(b: Correction, u: User = Depends(user), s: Session = Depends(db)):
+    sub, rev, draft, quote = prepare_correction(b, u, s)
+    result = new_revision(s, u, sub, draft)
+    insert(s, u, 'decision', {**b.model_dump(), 'action': 'accepted', 'author': u.email,
+           'new_revision_id': result['id'], 'removed': quote, 'at': int(time.time())})
+    audit(s, u, 'correction_applied', result['id'])
+    s.commit()
+    return result
+
+
+@app.get('/api/notifications')
+def notifications(u: User = Depends(user), s: Session = Depends(db)):
+    revalidate(s, u)
+    result = [x for x in rows(s, u, 'notification') if x['owner'] == u.id or u.role in ('reviewer', 'manager')]
+    s.commit()
+    return [{**x, 'read': u.id in x.get('read_by', [])} for x in result]
+
+
+@app.post('/api/notifications/{id}/read')
+def read_notification(id: int, u: User = Depends(user), s: Session = Depends(db)):
+    r = get(s, u, id, 'notification', True)
+    v = r.value()
+    if v['owner'] != u.id and u.role not in ('reviewer', 'manager'):
+        raise HTTPException(403, 'Notification unavailable')
+    update(r, read_by=sorted(set(v.get('read_by', []) + [u.id])))
+    s.commit()
+    return {'ok': True}
+
+
+@app.get('/api/submissions/{id}/evidence')
+def approval_evidence(id: int, u: User = Depends(user), s: Session = Depends(db)):
+    sub = get(s, u, id, 'submission').value()
+    revisions = [x for x in rows(s, u, 'revision') if x['submission_id'] == id]
+    ids = {x['id'] for x in revisions}
+    return {'submission_id': id, 'current_revision_id': sub['latest_revision'],
+            'revalidation_required': approval_stale(s, u, sub),
+            'approvals': [x for x in rows(s, u, 'approval') if x['revision_id'] in ids],
+            'revisions': revisions}
 
 
 class RequestReview(BaseModel):
@@ -747,7 +914,9 @@ def request_approval(
         raise HTTPException(403, "Only the creator can request approval")
     run = latest_run(s, u, b.revision_id)
     verify_review(s, u, v, b.revision_id, run)
-    update(sub, status="awaiting_review")
+    if v['status'] in ('awaiting_review', 'approved'):
+        return v
+    update(sub, status="awaiting_review", source_snapshot=run["source_snapshot"], dependency_version=run.get("dependency_version", 1))
     audit(s, u, "approval_requested", b.revision_id)
     s.commit()
     return sub.value()
@@ -762,11 +931,13 @@ def verify_review(s, u, sub, revision, run):
         raise HTTPException(409, "The content has changed; review the latest revision")
     if not run or run["status"] != "complete":
         raise HTTPException(409, "Complete the review first")
-    if run["source_snapshot"] != snapshot(current_sources(s, u)):
+    rev = get(s, u, revision, "revision").value()
+    snap = revision_snapshot(s, u, rev) if run.get("dependency_version") == 2 else snapshot(current_sources(s, u))
+    if run["source_snapshot"] != snap:
         raise HTTPException(409, "Approved sources changed; run a fresh review")
 
 
-class Approval(BaseModel):
+class Approval(NonBlankModel):
     revision_id: int
     action: Literal["approved", "changes_requested"]
     reason: str = Field(min_length=1, max_length=2000)
@@ -804,9 +975,14 @@ def approve(id: int, b: Approval, u: User = Depends(user), s: Session = Depends(
             "source_snapshot": run["source_snapshot"],
             "at": int(time.time()),
             "review_mode": run["mode"],
+            "review_id": run["id"],
+            "input_hash": run["input_hash"],
+            "source_dependencies": run.get("source_dependencies", []),
+            "findings": run["findings"],
+            "dependency_version": run.get("dependency_version", 1),
         },
     )
-    update(sub, status=b.action, source_snapshot=run["source_snapshot"])
+    update(sub, status=b.action, source_snapshot=run["source_snapshot"], dependency_version=run.get("dependency_version", 1))
     audit(s, u, b.action, b.revision_id)
     s.commit()
     return result

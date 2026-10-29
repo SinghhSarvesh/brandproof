@@ -1,0 +1,577 @@
+{
+  "mode": "rules",
+  "disclosure": "Synthetic AI-assisted fixtures. Validation split is not an independently held-out study. Ambiguous cases are reported separately and excluded from precision/recall.",
+  "unit": "unique category/source pair per submission",
+  "scored_cases": 30,
+  "ambiguous_cases": 10,
+  "provider_failures": 0,
+  "complete": true,
+  "control_false_alarms": 0,
+  "categories": {
+    "contradiction": {
+      "tp": 8,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    "terminology": {
+      "tp": 6,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    "unsupported_claim": {
+      "tp": 6,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0
+    }
+  },
+  "overall": {
+    "tp": 20,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0
+  },
+  "results": [
+    {
+      "id": "compliant-01",
+      "split": "development",
+      "group": "compliant",
+      "expected": [],
+      "predicted": [],
+      "error": null
+    },
+    {
+      "id": "compliant-02",
+      "split": "validation",
+      "group": "compliant",
+      "expected": [],
+      "predicted": [],
+      "error": null
+    },
+    {
+      "id": "compliant-03",
+      "split": "development",
+      "group": "compliant",
+      "expected": [],
+      "predicted": [],
+      "error": null
+    },
+    {
+      "id": "compliant-04",
+      "split": "validation",
+      "group": "compliant",
+      "expected": [],
+      "predicted": [],
+      "error": null
+    },
+    {
+      "id": "compliant-05",
+      "split": "development",
+      "group": "compliant",
+      "expected": [],
+      "predicted": [],
+      "error": null
+    },
+    {
+      "id": "compliant-06",
+      "split": "validation",
+      "group": "compliant",
+      "expected": [],
+      "predicted": [],
+      "error": null
+    },
+    {
+      "id": "compliant-07",
+      "split": "development",
+      "group": "compliant",
+      "expected": [],
+      "predicted": [],
+      "error": null
+    },
+    {
+      "id": "compliant-08",
+      "split": "validation",
+      "group": "compliant",
+      "expected": [],
+      "predicted": [],
+      "error": null
+    },
+    {
+      "id": "compliant-09",
+      "split": "development",
+      "group": "compliant",
+      "expected": [],
+      "predicted": [],
+      "error": null
+    },
+    {
+      "id": "compliant-10",
+      "split": "validation",
+      "group": "compliant",
+      "expected": [],
+      "predicted": [],
+      "error": null
+    },
+    {
+      "id": "clear_issue-01",
+      "split": "development",
+      "group": "clear_issue",
+      "expected": [
+        [
+          "contradiction",
+          1
+        ]
+      ],
+      "predicted": [
+        [
+          "contradiction",
+          1
+        ]
+      ],
+      "error": null
+    },
+    {
+      "id": "clear_issue-02",
+      "split": "validation",
+      "group": "clear_issue",
+      "expected": [
+        [
+          "contradiction",
+          1
+        ]
+      ],
+      "predicted": [
+        [
+          "contradiction",
+          1
+        ]
+      ],
+      "error": null
+    },
+    {
+      "id": "clear_issue-03",
+      "split": "development",
+      "group": "clear_issue",
+      "expected": [
+        [
+          "contradiction",
+          1
+        ]
+      ],
+      "predicted": [
+        [
+          "contradiction",
+          1
+        ]
+      ],
+      "error": null
+    },
+    {
+      "id": "clear_issue-04",
+      "split": "validation",
+      "group": "clear_issue",
+      "expected": [
+        [
+          "contradiction",
+          1
+        ]
+      ],
+      "predicted": [
+        [
+          "contradiction",
+          1
+        ]
+      ],
+      "error": null
+    },
+    {
+      "id": "clear_issue-05",
+      "split": "development",
+      "group": "clear_issue",
+      "expected": [
+        [
+          "contradiction",
+          1
+        ]
+      ],
+      "predicted": [
+        [
+          "contradiction",
+          1
+        ]
+      ],
+      "error": null
+    },
+    {
+      "id": "clear_issue-06",
+      "split": "validation",
+      "group": "clear_issue",
+      "expected": [
+        [
+          "contradiction",
+          1
+        ]
+      ],
+      "predicted": [
+        [
+          "contradiction",
+          1
+        ]
+      ],
+      "error": null
+    },
+    {
+      "id": "clear_issue-07",
+      "split": "development",
+      "group": "clear_issue",
+      "expected": [
+        [
+          "contradiction",
+          1
+        ]
+      ],
+      "predicted": [
+        [
+          "contradiction",
+          1
+        ]
+      ],
+      "error": null
+    },
+    {
+      "id": "clear_issue-08",
+      "split": "validation",
+      "group": "clear_issue",
+      "expected": [
+        [
+          "contradiction",
+          1
+        ]
+      ],
+      "predicted": [
+        [
+          "contradiction",
+          1
+        ]
+      ],
+      "error": null
+    },
+    {
+      "id": "clear_issue-09",
+      "split": "development",
+      "group": "clear_issue",
+      "expected": [
+        [
+          "terminology",
+          2
+        ]
+      ],
+      "predicted": [
+        [
+          "terminology",
+          2
+        ]
+      ],
+      "error": null
+    },
+    {
+      "id": "clear_issue-10",
+      "split": "validation",
+      "group": "clear_issue",
+      "expected": [
+        [
+          "terminology",
+          2
+        ]
+      ],
+      "predicted": [
+        [
+          "terminology",
+          2
+        ]
+      ],
+      "error": null
+    },
+    {
+      "id": "clear_issue-11",
+      "split": "development",
+      "group": "clear_issue",
+      "expected": [
+        [
+          "terminology",
+          2
+        ]
+      ],
+      "predicted": [
+        [
+          "terminology",
+          2
+        ]
+      ],
+      "error": null
+    },
+    {
+      "id": "clear_issue-12",
+      "split": "validation",
+      "group": "clear_issue",
+      "expected": [
+        [
+          "terminology",
+          2
+        ]
+      ],
+      "predicted": [
+        [
+          "terminology",
+          2
+        ]
+      ],
+      "error": null
+    },
+    {
+      "id": "clear_issue-13",
+      "split": "development",
+      "group": "clear_issue",
+      "expected": [
+        [
+          "terminology",
+          2
+        ]
+      ],
+      "predicted": [
+        [
+          "terminology",
+          2
+        ]
+      ],
+      "error": null
+    },
+    {
+      "id": "clear_issue-14",
+      "split": "validation",
+      "group": "clear_issue",
+      "expected": [
+        [
+          "terminology",
+          2
+        ]
+      ],
+      "predicted": [
+        [
+          "terminology",
+          2
+        ]
+      ],
+      "error": null
+    },
+    {
+      "id": "clear_issue-15",
+      "split": "development",
+      "group": "clear_issue",
+      "expected": [
+        [
+          "unsupported_claim",
+          3
+        ]
+      ],
+      "predicted": [
+        [
+          "unsupported_claim",
+          3
+        ]
+      ],
+      "error": null
+    },
+    {
+      "id": "clear_issue-16",
+      "split": "validation",
+      "group": "clear_issue",
+      "expected": [
+        [
+          "unsupported_claim",
+          3
+        ]
+      ],
+      "predicted": [
+        [
+          "unsupported_claim",
+          3
+        ]
+      ],
+      "error": null
+    },
+    {
+      "id": "clear_issue-17",
+      "split": "development",
+      "group": "clear_issue",
+      "expected": [
+        [
+          "unsupported_claim",
+          3
+        ]
+      ],
+      "predicted": [
+        [
+          "unsupported_claim",
+          3
+        ]
+      ],
+      "error": null
+    },
+    {
+      "id": "clear_issue-18",
+      "split": "validation",
+      "group": "clear_issue",
+      "expected": [
+        [
+          "unsupported_claim",
+          3
+        ]
+      ],
+      "predicted": [
+        [
+          "unsupported_claim",
+          3
+        ]
+      ],
+      "error": null
+    },
+    {
+      "id": "clear_issue-19",
+      "split": "development",
+      "group": "clear_issue",
+      "expected": [
+        [
+          "unsupported_claim",
+          3
+        ]
+      ],
+      "predicted": [
+        [
+          "unsupported_claim",
+          3
+        ]
+      ],
+      "error": null
+    },
+    {
+      "id": "clear_issue-20",
+      "split": "validation",
+      "group": "clear_issue",
+      "expected": [
+        [
+          "unsupported_claim",
+          3
+        ]
+      ],
+      "predicted": [
+        [
+          "unsupported_claim",
+          3
+        ]
+      ],
+      "error": null
+    },
+    {
+      "id": "ambiguous-01",
+      "split": "development",
+      "group": "ambiguous",
+      "expected": [],
+      "predicted": [],
+      "error": null
+    },
+    {
+      "id": "ambiguous-02",
+      "split": "validation",
+      "group": "ambiguous",
+      "expected": [],
+      "predicted": [],
+      "error": null
+    },
+    {
+      "id": "ambiguous-03",
+      "split": "development",
+      "group": "ambiguous",
+      "expected": [],
+      "predicted": [],
+      "error": null
+    },
+    {
+      "id": "ambiguous-04",
+      "split": "validation",
+      "group": "ambiguous",
+      "expected": [],
+      "predicted": [],
+      "error": null
+    },
+    {
+      "id": "ambiguous-05",
+      "split": "development",
+      "group": "ambiguous",
+      "expected": [],
+      "predicted": [],
+      "error": null
+    },
+    {
+      "id": "ambiguous-06",
+      "split": "validation",
+      "group": "ambiguous",
+      "expected": [],
+      "predicted": [],
+      "error": null
+    },
+    {
+      "id": "ambiguous-07",
+      "split": "development",
+      "group": "ambiguous",
+      "expected": [],
+      "predicted": [
+        [
+          "unsupported_claim",
+          3
+        ]
+      ],
+      "error": null
+    },
+    {
+      "id": "ambiguous-08",
+      "split": "validation",
+      "group": "ambiguous",
+      "expected": [],
+      "predicted": [
+        [
+          "terminology",
+          2
+        ]
+      ],
+      "error": null
+    },
+    {
+      "id": "ambiguous-09",
+      "split": "development",
+      "group": "ambiguous",
+      "expected": [],
+      "predicted": [
+        [
+          "contradiction",
+          1
+        ]
+      ],
+      "error": null
+    },
+    {
+      "id": "ambiguous-10",
+      "split": "validation",
+      "group": "ambiguous",
+      "expected": [],
+      "predicted": [],
+      "error": null
+    }
+  ]
+}

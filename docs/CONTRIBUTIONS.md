@@ -1,19 +1,15 @@
-# Contribution record
+# Participants and contributions
 
-Team RAKSHITA7050: Rakshita Jha, Karunasankar M, Sarvesh Singh.
+Team **RAKSHITA7050** · TechCircuit · Inkloom AI problem statement.
 
-The Round 1 proposal assigned proposed roles, not completed work:
-
-- Rakshita Jha: research, requirements, user validation and submission.
-- Karunasankar M: frontend and review interfaces.
-- Sarvesh Singh: backend, AI review and data access.
-
-Initial implementation assistance is recorded in [DISCLOSURES.md](DISCLOSURES.md). Members should record their actual implementation, review, testing and explanation work below, with commit or evidence links.
-
-| Member | Actual work completed | Evidence |
+| Participant | Role | Completed work reported by the team |
 | --- | --- | --- |
-| Rakshita Jha | To be recorded by member | Pending |
-| Karunasankar M | To be recorded by member | Pending |
-| Sarvesh Singh | Supplied the submitted proposal and authorised the initial assisted build | Conversation; implementation review pending |
+| Rakshita Jha | Team leader | Requirements, user validation and submission coordination |
+| Karunasankar M | Team member | Frontend and review interfaces |
+| Sarvesh Singh | Team member | Backend, AI review and database/data access |
 
-Dependency and external-service disclosures are maintained in [DISCLOSURES.md](DISCLOSURES.md).
+Sarvesh confirmed these contribution descriptions in the preparation conversation on 29 October 2026. They are **team-reported**, not an independent attribution audit. All members should be able to explain their work and demonstrate it. No interview findings or user-validation measurements are claimed without underlying evidence.
+
+ChatGPT/Codex assisted with implementation, tests, fixtures, debugging and documentation. The team retains responsibility for reviewing the code and accuracy of the submission. Commit history records repository changes; it should not be rewritten to imply unaided individual authorship.
+
+The organiser's registration IDs, institutional/contact fields and final upload form were not provided. The team leader must supply any such required fields and make the single team submission. Other members do not submit separately.

@@ -1,3 +1,5 @@
+> Historical Round 2 milestone. See [ROUND3.md](ROUND3.md) for the current changes and limitations.
+
 # Tools and assistance
 
 ChatGPT/Codex assisted with the Round 1 proposal and generated the initial application implementation, tests and documentation at Sarvesh Singh's request on 22 October 2026. The team is responsible for reviewing, testing and explaining the submitted work. The initial upload is organised into logical commits; these are not evidence of separate human development sessions.

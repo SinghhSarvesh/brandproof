@@ -1,3 +1,5 @@
+> Historical Round 2 milestone. See [ROUND3.md](ROUND3.md) for the current changes and limitations.
+
 # First implementation milestone
 
 Built 22 October 2026. This document describes implementation status, not a final Round 2 submission.
