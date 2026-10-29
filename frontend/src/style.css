@@ -955,3 +955,9 @@ footer {
   font-size: 12px;
   text-align: center;
 }
+
+
+.correction-editor { width: 100%; }
+.correction-diff { margin-top: 12px; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; overflow-wrap: anywhere; }
+.correction-diff del { background: #fee2e2; color: #7f1d1d; }
+.correction-diff ins { background: #dcfce7; color: #14532d; }

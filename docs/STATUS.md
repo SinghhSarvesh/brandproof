@@ -1,3 +1,5 @@
+> Historical Round 2 milestone. See [ROUND3.md](ROUND3.md) for the current changes and limitations.
+
 # First implementation milestone
 
 Built 22 October 2026. This document describes implementation status, not a final Round 2 submission.
@@ -38,3 +40,4 @@ Original images/PDF bytes are not saved. Extracted text and metadata remain in t
 3. Approval of the exact revision: complete source-change and exception scenarios, concurrency testing and demonstrable invalidation.
 
 Do not report the Round 1 85% precision, 80% recall or 18/20 correction goals as achieved until measured. Seeded content and automated tests are not user-testing evidence.
+

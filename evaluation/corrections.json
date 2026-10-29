@@ -1,0 +1,165 @@
+{
+  "disclosure": "18 expected exact edits and 2 expected rejections. Exact-output checks are not independent human intent-preservation scores. Human assessment pending.",
+  "cases": [
+    {
+      "id": "numeric-1",
+      "kind": "fact",
+      "before": "Launch 1: enjoy 20 hours of battery life.",
+      "replacement": "up to 12 hours",
+      "after": "Launch 1: enjoy up to 12 hours of battery life.",
+      "status": 200
+    },
+    {
+      "id": "numeric-2",
+      "kind": "fact",
+      "before": "Launch 2: enjoy 21 hours of battery life.",
+      "replacement": "up to 12 hours",
+      "after": "Launch 2: enjoy up to 12 hours of battery life.",
+      "status": 200
+    },
+    {
+      "id": "numeric-3",
+      "kind": "fact",
+      "before": "Launch 3: enjoy 22 hours of battery life.",
+      "replacement": "up to 12 hours",
+      "after": "Launch 3: enjoy up to 12 hours of battery life.",
+      "status": 200
+    },
+    {
+      "id": "numeric-4",
+      "kind": "fact",
+      "before": "Launch 4: enjoy 23 hours of battery life.",
+      "replacement": "up to 12 hours",
+      "after": "Launch 4: enjoy up to 12 hours of battery life.",
+      "status": 200
+    },
+    {
+      "id": "numeric-5",
+      "kind": "fact",
+      "before": "Launch 5: enjoy 24 hours of battery life.",
+      "replacement": "up to 12 hours",
+      "after": "Launch 5: enjoy up to 12 hours of battery life.",
+      "status": 200
+    },
+    {
+      "id": "numeric-6",
+      "kind": "fact",
+      "before": "Launch 6: enjoy 25 hours of battery life.",
+      "replacement": "up to 12 hours",
+      "after": "Launch 6: enjoy up to 12 hours of battery life.",
+      "status": 200
+    },
+    {
+      "id": "numeric-7",
+      "kind": "fact",
+      "before": "Launch 7: enjoy 26 hours of battery life.",
+      "replacement": "up to 12 hours",
+      "after": "Launch 7: enjoy up to 12 hours of battery life.",
+      "status": 200
+    },
+    {
+      "id": "numeric-8",
+      "kind": "fact",
+      "before": "Launch 8: enjoy 27 hours of battery life.",
+      "replacement": "up to 12 hours",
+      "after": "Launch 8: enjoy up to 12 hours of battery life.",
+      "status": 200
+    },
+    {
+      "id": "numeric-9",
+      "kind": "fact",
+      "before": "Launch 9: enjoy 28 hours of battery life.",
+      "replacement": "up to 12 hours",
+      "after": "Launch 9: enjoy up to 12 hours of battery life.",
+      "status": 200
+    },
+    {
+      "id": "numeric-10",
+      "kind": "fact",
+      "before": "Launch 10: enjoy 29 hours of battery life.",
+      "replacement": "up to 12 hours",
+      "after": "Launch 10: enjoy up to 12 hours of battery life.",
+      "status": 200
+    },
+    {
+      "id": "name-1",
+      "kind": "term",
+      "before": "Meet NS1.",
+      "replacement": "Northstar One",
+      "after": "Meet Northstar One.",
+      "status": 200
+    },
+    {
+      "id": "name-2",
+      "kind": "term",
+      "before": "Discover NS1 today.",
+      "replacement": "Northstar One",
+      "after": "Discover Northstar One today.",
+      "status": 200
+    },
+    {
+      "id": "name-3",
+      "kind": "term",
+      "before": "Explore NS1.",
+      "replacement": "Northstar One",
+      "after": "Explore Northstar One.",
+      "status": 200
+    },
+    {
+      "id": "name-4",
+      "kind": "term",
+      "before": "Launch NS1 now.",
+      "replacement": "Northstar One",
+      "after": "Launch Northstar One now.",
+      "status": 200
+    },
+    {
+      "id": "name-5",
+      "kind": "term",
+      "before": "Choose NS1.",
+      "replacement": "Northstar One",
+      "after": "Choose Northstar One.",
+      "status": 200
+    },
+    {
+      "id": "remove-1",
+      "kind": "claim",
+      "before": "Our No. 1 device.",
+      "replacement": "",
+      "after": "Our  device.",
+      "status": 200
+    },
+    {
+      "id": "remove-2",
+      "kind": "claim",
+      "before": "Meet the No. 1 product.",
+      "replacement": "",
+      "after": "Meet the  product.",
+      "status": 200
+    },
+    {
+      "id": "remove-3",
+      "kind": "claim",
+      "before": "Choose No. 1 today.",
+      "replacement": "",
+      "after": "Choose  today.",
+      "status": 200
+    },
+    {
+      "id": "unsafe-1",
+      "kind": "fact",
+      "before": "Enjoy 20 hours of battery life.",
+      "replacement": "up to 99 hours",
+      "after": null,
+      "status": 422
+    },
+    {
+      "id": "unsafe-2",
+      "kind": "fact",
+      "before": "Enjoy 20 hours of battery life.",
+      "replacement": "12 hours",
+      "after": null,
+      "status": 422
+    }
+  ]
+}

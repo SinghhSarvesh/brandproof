@@ -32,6 +32,47 @@ const initial = {
   alt_text: "",
   ai_consent: false,
 };
+function CorrectionEditor({ finding, run, revision, busy, api, act, onApplied }: {
+  finding: Item; run: Item; revision: Item; busy: boolean;
+  api: (path: string, body?: any, method?: string) => Promise<any>;
+  act: (fn: () => Promise<void>) => Promise<void>; onApplied: () => Promise<void>;
+}) {
+  const [replacement, setReplacement] = useState(finding.suggestion || "");
+  const [reason, setReason] = useState("Apply source-supported correction");
+  const [preview, setPreview] = useState<Item | null>(null);
+  const offsets: number[] = [];
+  if (finding.quote && !["dimensions", "asset", "accessibility"].includes(finding.category)) {
+    let i = revision.text.indexOf(finding.quote);
+    while (i >= 0) { offsets.push(i); i = revision.text.indexOf(finding.quote, i + finding.quote.length); }
+  }
+  const [offset, setOffset] = useState(offsets[0] ?? -1);
+  if (!offsets.length) return <small>This finding needs a manual content or asset edit.</small>;
+  const body = { review_id: run.id, index: finding.index, revision_id: revision.id,
+    start: Array.from(revision.text.slice(0, offset)).length, replacement, reason };
+  return <details className="correction-editor">
+    <summary>Accept or edit correction</summary>
+    {offsets.length > 1 && <label>Quoted occurrence<select value={offset} onChange={(e) => {
+      setOffset(Number(e.target.value)); setPreview(null);
+    }}>{offsets.map((o, i) => <option key={o} value={o}>Occurrence {i + 1}: {revision.text.slice(Math.max(0, o - 25), o + finding.quote.length + 25)}</option>)}</select></label>}
+    <label>Replacement (edit before applying)<textarea value={replacement} onChange={(e) => {
+      setReplacement(e.target.value); setPreview(null);
+    }} /></label>
+    <label>Reason<input value={reason} onChange={(e) => {setReason(e.target.value); setPreview(null);}} /></label>
+    <button disabled={busy || !reason.trim()} onClick={() => void act(async () => {
+      setPreview(await api("/corrections/preview", body));
+    })}>Preview exact change</button>
+    {preview && <div className="correction-diff">
+      <p><strong>Remove:</strong> <del>{preview.removed}</del></p>
+      <p><strong>Insert:</strong> <ins>{preview.inserted || "(delete selected span)"}</ins></p>
+      <p><strong>Resulting draft</strong></p><p className="draft-text">{preview.after}</p>
+      <p>Confirm the campaign intent is preserved. Saving requires another review.</p>
+      <button className="primary" disabled={busy} onClick={() => void act(async () => {
+        await api("/corrections/apply", body); await onApplied();
+      })}>Accept and save new revision</button>
+    </div>}
+  </details>;
+}
+
 function App() {
   const [token, setToken] = useState(sessionStorage.getItem("bp-token") || "");
   const [me, setMe] = useState<Item | null>(null);
@@ -64,6 +105,7 @@ function App() {
   const [exception, setException] = useState("");
   const [search, setSearch] = useState("");
   const [isLogo, setIsLogo] = useState(false);
+  const [notifications, setNotifications] = useState<Item[]>([]);
   const [audit, setAudit] = useState<Item[]>([]);
   const [source, setSource] = useState({
     title: "",
@@ -121,16 +163,18 @@ function App() {
     }
   }
   async function refresh() {
-    const [m, s, r, i] = await Promise.all([
+    const [m, s, r, i, n] = await Promise.all([
       api("/me"),
       api("/submissions"),
       api("/sources"),
       api("/insights"),
+      api("/notifications"),
     ]);
     setMe(m);
     setSubmissions(s);
     setSources(r);
     setInsights(i);
+    setNotifications(n);
   }
   useEffect(() => {
     if (token) void act(refresh);
@@ -153,7 +197,7 @@ function App() {
   async function save() {
     let item;
     if (detail) {
-      await api(`/submissions/${detail.id}/revisions`, draft);
+      await api(`/submissions/${detail.id}/revisions`, { ...draft, expected_revision_id: rev.id });
       item = detail;
     } else item = await api("/submissions", draft);
     await refresh();
@@ -387,6 +431,21 @@ function App() {
               <AlertTriangle size={17} />
               {error}
             </div>
+          )}
+          {notifications.some((n) => !n.read) && (
+            <section className="panel inner" aria-label="Revalidation inbox">
+              <h2>Revalidation inbox</h2>
+              <p>Evidence changed. These revisions need fresh checks and a new human decision.</p>
+              {notifications.filter((n) => !n.read).map((n) => (
+                <div className="actions" key={n.id}>
+                  <span>Submission #{n.submission_id}: {n.message}</span>
+                  <button disabled={busy} onClick={() => void act(() => open(n.submission_id))}>Open review</button>
+                  <button disabled={busy} onClick={() => void act(async () => {
+                    await api(`/notifications/${n.id}/read`, {}); await refresh();
+                  })}>Mark read</button>
+                </div>
+              ))}
+            </section>
           )}
           {notice && (
             <div role="status" className="notice">
@@ -867,6 +926,16 @@ function App() {
                               : "AI-assisted review with verified source references. Human judgment is still required."}
                           </p>
                           {run.error && <p className="alert">{run.error}</p>}
+                          {run.conflicts?.map((c: Item, i: number) => <p className="alert" key={i}>
+                            {c.message} Sources: {c.source_ids.join(", ")}</p>)}
+                          <details>
+                            <summary>Ranked evidence · {run.retrieval?.length ?? 0} sources</summary>
+                            <p>Lexical ranking with structured matches first. Scores measure text relevance, not confidence or truth.</p>
+                            {run.retrieval?.map((x: Item) => <article key={x.source_id} className="finding">
+                              <strong>{x.title} · v{x.version} · #{x.source_id}</strong>
+                              <p>{x.passage}</p><small>{x.reason} · score {x.score}</small>
+                            </article>)}
+                          </details>
                         </div>
                         {run.findings.map((f: Item) => (
                           <article className="finding" key={f.index}>
@@ -896,17 +965,11 @@ function App() {
                             )}
                             {me.role !== "reviewer" && (
                               <div className="actions">
-                                <button
-                                  onClick={() => {
-                                    setDraft({ ...initial, ...rev });
-                                    setEditing(true);
-                                    setNotice(
-                                      "Edit the relevant passage using the suggestion, then save a new revision.",
-                                    );
-                                  }}
-                                >
-                                  Edit with suggestion
-                                </button>
+                                <CorrectionEditor key={`${run.id}-${f.index}`} finding={f} run={run} revision={rev}
+                                  busy={busy} api={api} act={act} onApplied={async () => {
+                                    await open(detail.id); await refresh();
+                                    setNotice("Correction saved as a new revision. Run checks again before requesting approval.");
+                                  }} />
                                 <button
                                   onClick={() => {
                                     const reason = window.prompt(
@@ -956,6 +1019,14 @@ function App() {
                     )}
                   </div>
                   <div className="panel timeline">
+                    <h3>Approval evidence</h3>
+                    {detail.approvals.map((a: Item) => <details key={a.id}>
+                      <summary>Revision #{a.revision_id} · {a.action.replaceAll("_", " ")} · {a.reviewer}</summary>
+                      <p>{a.reason}</p>{a.exception_reason && <p>Exception: {a.exception_reason}</p>}
+                      <p>Review #{a.review_id ?? "legacy"} · {a.review_mode}</p>
+                      <small>Content hash: {a.input_hash ?? "Not recorded in legacy approval"}</small>
+                      {a.source_dependencies?.map((x: Item) => <p key={x.id}>{x.title} · v{x.version}: {x.text}</p>)}
+                    </details>)}
                     <h3>Revision history</h3>
                     {detail.revisions.map((r: Item) => (
                       <details key={r.id}>
@@ -1249,3 +1320,4 @@ function App() {
   );
 }
 createRoot(document.getElementById("root")!).render(<App />);
+

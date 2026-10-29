@@ -1,0 +1,586 @@
+{
+  "disclosure": "Synthetic AI-assisted fixtures. Validation split is not an independently held-out study. Ambiguous cases are reported separately and excluded from precision/recall.",
+  "sources": [
+    {
+      "id": 1,
+      "title": "Battery",
+      "kind": "fact",
+      "text": "Up to 12 hours of battery life.",
+      "match": "battery life",
+      "replacement": "",
+      "scope": "all",
+      "version": 1,
+      "active": true,
+      "valid_from": "",
+      "valid_until": ""
+    },
+    {
+      "id": 2,
+      "title": "Product name",
+      "kind": "term",
+      "text": "Use the approved product name Northstar One, not NS1.",
+      "match": "NS1",
+      "replacement": "Northstar One",
+      "scope": "all",
+      "version": 1,
+      "active": true,
+      "valid_from": "",
+      "valid_until": ""
+    },
+    {
+      "id": 3,
+      "title": "Ranking",
+      "kind": "claim",
+      "text": "Do not use No. 1 without approved independent ranking evidence.",
+      "match": "No. 1",
+      "replacement": "",
+      "scope": "all",
+      "version": 1,
+      "active": true,
+      "valid_from": "",
+      "valid_until": ""
+    }
+  ],
+  "cases": [
+    {
+      "id": "compliant-01",
+      "group": "compliant",
+      "split": "development",
+      "text": "Meet Northstar One.",
+      "purpose": "Announce Northstar One",
+      "channel": "social",
+      "audience": "Customers",
+      "expected": [],
+      "assessment": "team-authored reference label"
+    },
+    {
+      "id": "compliant-02",
+      "group": "compliant",
+      "split": "validation",
+      "text": "Enjoy up to 12 hours of battery life.",
+      "purpose": "Announce Northstar One",
+      "channel": "social",
+      "audience": "Customers",
+      "expected": [],
+      "assessment": "team-authored reference label"
+    },
+    {
+      "id": "compliant-03",
+      "group": "compliant",
+      "split": "development",
+      "text": "Discover Northstar One today.",
+      "purpose": "Announce Northstar One",
+      "channel": "social",
+      "audience": "Customers",
+      "expected": [],
+      "assessment": "team-authored reference label"
+    },
+    {
+      "id": "compliant-04",
+      "group": "compliant",
+      "split": "validation",
+      "text": "Explore our new launch.",
+      "purpose": "Announce Northstar One",
+      "channel": "social",
+      "audience": "Customers",
+      "expected": [],
+      "assessment": "team-authored reference label"
+    },
+    {
+      "id": "compliant-05",
+      "group": "compliant",
+      "split": "development",
+      "text": "Northstar One is here.",
+      "purpose": "Announce Northstar One",
+      "channel": "social",
+      "audience": "Customers",
+      "expected": [],
+      "assessment": "team-authored reference label"
+    },
+    {
+      "id": "compliant-06",
+      "group": "compliant",
+      "split": "validation",
+      "text": "Learn more about Northstar One.",
+      "purpose": "Announce Northstar One",
+      "channel": "social",
+      "audience": "Customers",
+      "expected": [],
+      "assessment": "team-authored reference label"
+    },
+    {
+      "id": "compliant-07",
+      "group": "compliant",
+      "split": "development",
+      "text": "Explore the product details.",
+      "purpose": "Announce Northstar One",
+      "channel": "social",
+      "audience": "Customers",
+      "expected": [],
+      "assessment": "team-authored reference label"
+    },
+    {
+      "id": "compliant-08",
+      "group": "compliant",
+      "split": "validation",
+      "text": "Battery life: up to 12 hours.",
+      "purpose": "Announce Northstar One",
+      "channel": "social",
+      "audience": "Customers",
+      "expected": [],
+      "assessment": "team-authored reference label"
+    },
+    {
+      "id": "compliant-09",
+      "group": "compliant",
+      "split": "development",
+      "text": "Join the Northstar One launch.",
+      "purpose": "Announce Northstar One",
+      "channel": "social",
+      "audience": "Customers",
+      "expected": [],
+      "assessment": "team-authored reference label"
+    },
+    {
+      "id": "compliant-10",
+      "group": "compliant",
+      "split": "validation",
+      "text": "See Northstar One in action.",
+      "purpose": "Announce Northstar One",
+      "channel": "social",
+      "audience": "Customers",
+      "expected": [],
+      "assessment": "team-authored reference label"
+    },
+    {
+      "id": "clear_issue-01",
+      "group": "clear_issue",
+      "split": "development",
+      "text": "Experience 20 hours of battery life.",
+      "purpose": "Announce Northstar One",
+      "channel": "social",
+      "audience": "Customers",
+      "expected": [
+        {
+          "category": "contradiction",
+          "source_id": 1
+        }
+      ],
+      "assessment": "team-authored reference label"
+    },
+    {
+      "id": "clear_issue-02",
+      "group": "clear_issue",
+      "split": "validation",
+      "text": "Battery life lasts 18 hours.",
+      "purpose": "Announce Northstar One",
+      "channel": "social",
+      "audience": "Customers",
+      "expected": [
+        {
+          "category": "contradiction",
+          "source_id": 1
+        }
+      ],
+      "assessment": "team-authored reference label"
+    },
+    {
+      "id": "clear_issue-03",
+      "group": "clear_issue",
+      "split": "development",
+      "text": "Get 24 hours of battery life.",
+      "purpose": "Announce Northstar One",
+      "channel": "social",
+      "audience": "Customers",
+      "expected": [
+        {
+          "category": "contradiction",
+          "source_id": 1
+        }
+      ],
+      "assessment": "team-authored reference label"
+    },
+    {
+      "id": "clear_issue-04",
+      "group": "clear_issue",
+      "split": "validation",
+      "text": "Enjoy 16 hours of battery life.",
+      "purpose": "Announce Northstar One",
+      "channel": "social",
+      "audience": "Customers",
+      "expected": [
+        {
+          "category": "contradiction",
+          "source_id": 1
+        }
+      ],
+      "assessment": "team-authored reference label"
+    },
+    {
+      "id": "clear_issue-05",
+      "group": "clear_issue",
+      "split": "development",
+      "text": "Battery life: 15 hours.",
+      "purpose": "Announce Northstar One",
+      "channel": "social",
+      "audience": "Customers",
+      "expected": [
+        {
+          "category": "contradiction",
+          "source_id": 1
+        }
+      ],
+      "assessment": "team-authored reference label"
+    },
+    {
+      "id": "clear_issue-06",
+      "group": "clear_issue",
+      "split": "validation",
+      "text": "Discover 19 hours of battery life.",
+      "purpose": "Announce Northstar One",
+      "channel": "social",
+      "audience": "Customers",
+      "expected": [
+        {
+          "category": "contradiction",
+          "source_id": 1
+        }
+      ],
+      "assessment": "team-authored reference label"
+    },
+    {
+      "id": "clear_issue-07",
+      "group": "clear_issue",
+      "split": "development",
+      "text": "Expect 30 hours of battery life.",
+      "purpose": "Announce Northstar One",
+      "channel": "social",
+      "audience": "Customers",
+      "expected": [
+        {
+          "category": "contradiction",
+          "source_id": 1
+        }
+      ],
+      "assessment": "team-authored reference label"
+    },
+    {
+      "id": "clear_issue-08",
+      "group": "clear_issue",
+      "split": "validation",
+      "text": "Battery life reaches 22 hours.",
+      "purpose": "Announce Northstar One",
+      "channel": "social",
+      "audience": "Customers",
+      "expected": [
+        {
+          "category": "contradiction",
+          "source_id": 1
+        }
+      ],
+      "assessment": "team-authored reference label"
+    },
+    {
+      "id": "clear_issue-09",
+      "group": "clear_issue",
+      "split": "development",
+      "text": "Meet NS1.",
+      "purpose": "Announce Northstar One",
+      "channel": "social",
+      "audience": "Customers",
+      "expected": [
+        {
+          "category": "terminology",
+          "source_id": 2
+        }
+      ],
+      "assessment": "team-authored reference label"
+    },
+    {
+      "id": "clear_issue-10",
+      "group": "clear_issue",
+      "split": "validation",
+      "text": "Explore NS1 today.",
+      "purpose": "Announce Northstar One",
+      "channel": "social",
+      "audience": "Customers",
+      "expected": [
+        {
+          "category": "terminology",
+          "source_id": 2
+        }
+      ],
+      "assessment": "team-authored reference label"
+    },
+    {
+      "id": "clear_issue-11",
+      "group": "clear_issue",
+      "split": "development",
+      "text": "Choose NS1 for your next launch.",
+      "purpose": "Announce Northstar One",
+      "channel": "social",
+      "audience": "Customers",
+      "expected": [
+        {
+          "category": "terminology",
+          "source_id": 2
+        }
+      ],
+      "assessment": "team-authored reference label"
+    },
+    {
+      "id": "clear_issue-12",
+      "group": "clear_issue",
+      "split": "validation",
+      "text": "The NS1 launch is here.",
+      "purpose": "Announce Northstar One",
+      "channel": "social",
+      "audience": "Customers",
+      "expected": [
+        {
+          "category": "terminology",
+          "source_id": 2
+        }
+      ],
+      "assessment": "team-authored reference label"
+    },
+    {
+      "id": "clear_issue-13",
+      "group": "clear_issue",
+      "split": "development",
+      "text": "Discover NS1 in store.",
+      "purpose": "Announce Northstar One",
+      "channel": "social",
+      "audience": "Customers",
+      "expected": [
+        {
+          "category": "terminology",
+          "source_id": 2
+        }
+      ],
+      "assessment": "team-authored reference label"
+    },
+    {
+      "id": "clear_issue-14",
+      "group": "clear_issue",
+      "split": "validation",
+      "text": "Learn more about NS1.",
+      "purpose": "Announce Northstar One",
+      "channel": "social",
+      "audience": "Customers",
+      "expected": [
+        {
+          "category": "terminology",
+          "source_id": 2
+        }
+      ],
+      "assessment": "team-authored reference label"
+    },
+    {
+      "id": "clear_issue-15",
+      "group": "clear_issue",
+      "split": "development",
+      "text": "India's No. 1 device.",
+      "purpose": "Announce Northstar One",
+      "channel": "social",
+      "audience": "Customers",
+      "expected": [
+        {
+          "category": "unsupported_claim",
+          "source_id": 3
+        }
+      ],
+      "assessment": "team-authored reference label"
+    },
+    {
+      "id": "clear_issue-16",
+      "group": "clear_issue",
+      "split": "validation",
+      "text": "Meet the No. 1 choice.",
+      "purpose": "Announce Northstar One",
+      "channel": "social",
+      "audience": "Customers",
+      "expected": [
+        {
+          "category": "unsupported_claim",
+          "source_id": 3
+        }
+      ],
+      "assessment": "team-authored reference label"
+    },
+    {
+      "id": "clear_issue-17",
+      "group": "clear_issue",
+      "split": "development",
+      "text": "Our No. 1 device is here.",
+      "purpose": "Announce Northstar One",
+      "channel": "social",
+      "audience": "Customers",
+      "expected": [
+        {
+          "category": "unsupported_claim",
+          "source_id": 3
+        }
+      ],
+      "assessment": "team-authored reference label"
+    },
+    {
+      "id": "clear_issue-18",
+      "group": "clear_issue",
+      "split": "validation",
+      "text": "Choose the No. 1 product.",
+      "purpose": "Announce Northstar One",
+      "channel": "social",
+      "audience": "Customers",
+      "expected": [
+        {
+          "category": "unsupported_claim",
+          "source_id": 3
+        }
+      ],
+      "assessment": "team-authored reference label"
+    },
+    {
+      "id": "clear_issue-19",
+      "group": "clear_issue",
+      "split": "development",
+      "text": "The No. 1 launch today.",
+      "purpose": "Announce Northstar One",
+      "channel": "social",
+      "audience": "Customers",
+      "expected": [
+        {
+          "category": "unsupported_claim",
+          "source_id": 3
+        }
+      ],
+      "assessment": "team-authored reference label"
+    },
+    {
+      "id": "clear_issue-20",
+      "group": "clear_issue",
+      "split": "validation",
+      "text": "Discover the No. 1 device.",
+      "purpose": "Announce Northstar One",
+      "channel": "social",
+      "audience": "Customers",
+      "expected": [
+        {
+          "category": "unsupported_claim",
+          "source_id": 3
+        }
+      ],
+      "assessment": "team-authored reference label"
+    },
+    {
+      "id": "ambiguous-01",
+      "group": "ambiguous",
+      "split": "development",
+      "text": "A battery that keeps going all day.",
+      "purpose": "Announce Northstar One",
+      "channel": "social",
+      "audience": "Customers",
+      "expected": [],
+      "assessment": "human contextual review required"
+    },
+    {
+      "id": "ambiguous-02",
+      "group": "ambiguous",
+      "split": "validation",
+      "text": "The best device for everyone.",
+      "purpose": "Announce Northstar One",
+      "channel": "social",
+      "audience": "Customers",
+      "expected": [],
+      "assessment": "human contextual review required"
+    },
+    {
+      "id": "ambiguous-03",
+      "group": "ambiguous",
+      "split": "development",
+      "text": "Enjoy 12 hours of battery life.",
+      "purpose": "Announce Northstar One",
+      "channel": "social",
+      "audience": "Customers",
+      "expected": [],
+      "assessment": "human contextual review required"
+    },
+    {
+      "id": "ambiguous-04",
+      "group": "ambiguous",
+      "split": "validation",
+      "text": "Northstar One lasts longer.",
+      "purpose": "Announce Northstar One",
+      "channel": "social",
+      "audience": "Customers",
+      "expected": [],
+      "assessment": "human contextual review required"
+    },
+    {
+      "id": "ambiguous-05",
+      "group": "ambiguous",
+      "split": "development",
+      "text": "A revolutionary experience awaits.",
+      "purpose": "Announce Northstar One",
+      "channel": "social",
+      "audience": "Customers",
+      "expected": [],
+      "assessment": "human contextual review required"
+    },
+    {
+      "id": "ambiguous-06",
+      "group": "ambiguous",
+      "split": "validation",
+      "text": "Battery life depends on usage.",
+      "purpose": "Announce Northstar One",
+      "channel": "social",
+      "audience": "Customers",
+      "expected": [],
+      "assessment": "human contextual review required"
+    },
+    {
+      "id": "ambiguous-07",
+      "group": "ambiguous",
+      "split": "development",
+      "text": "Customer says: this is No. 1.",
+      "purpose": "Announce Northstar One",
+      "channel": "social",
+      "audience": "Customers",
+      "expected": [],
+      "assessment": "human contextual review required"
+    },
+    {
+      "id": "ambiguous-08",
+      "group": "ambiguous",
+      "split": "validation",
+      "text": "Do not call the device NS1.",
+      "purpose": "Announce Northstar One",
+      "channel": "social",
+      "audience": "Customers",
+      "expected": [],
+      "assessment": "human contextual review required"
+    },
+    {
+      "id": "ambiguous-09",
+      "group": "ambiguous",
+      "split": "development",
+      "text": "Could battery life reach 20 hours?",
+      "purpose": "Announce Northstar One",
+      "channel": "social",
+      "audience": "Customers",
+      "expected": [],
+      "assessment": "human contextual review required"
+    },
+    {
+      "id": "ambiguous-10",
+      "group": "ambiguous",
+      "split": "validation",
+      "text": "Battery life: up to twelve hours.",
+      "purpose": "Announce Northstar One",
+      "channel": "social",
+      "audience": "Customers",
+      "expected": [],
+      "assessment": "human contextual review required"
+    }
+  ]
+}

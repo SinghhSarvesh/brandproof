@@ -1,3 +1,7 @@
+# Round 3 update
+
+See [Round 3 implementation, evidence and demo](docs/ROUND3.md) for ranked retrieval, controlled corrections, dependency-aware revalidation and reproducible evaluation. The earlier milestone description below is retained for setup context; current feature status is in the Round 3 document.
+
 # BrandProof
 
 Evidence-led brand content review with revision-specific human approval.
@@ -131,3 +135,4 @@ The supplied Docker image serves the built React frontend and FastAPI on port 80
 - [Tool and AI assistance disclosure](docs/DISCLOSURES.md)
 
 Evaluation targets are documented separately from measured results. Preserve real commit history during the official build window.
+
