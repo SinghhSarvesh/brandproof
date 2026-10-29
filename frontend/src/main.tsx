@@ -144,6 +144,9 @@ function App() {
         sessionStorage.removeItem("bp-open-review");
         setToken("");
         setMe(null);
+        setDetail(null);
+        setEditing(false);
+        setPage("Overview");
       }
       throw Error(
         typeof data.detail === "string"
@@ -180,11 +183,13 @@ function App() {
     setNotifications(n);
   }
   useEffect(() => {
-    if (token) void act(async () => {
-      await refresh();
+    if (token) {
       const saved = sessionStorage.getItem('bp-open-review');
-      if (saved) await open(Number(saved));
-    });
+      void act(async () => {
+        await refresh();
+        if (saved) await open(Number(saved));
+      });
+    }
   }, [token]);
   async function open(id: number) {
     setDetail(await api("/submissions/" + id));
@@ -418,6 +423,9 @@ function App() {
         sessionStorage.removeItem("bp-open-review");
                 setToken("");
                 setMe(null);
+        setDetail(null);
+        setEditing(false);
+        setPage("Overview");
               })
             }
           >
