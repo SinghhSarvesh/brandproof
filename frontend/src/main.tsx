@@ -223,12 +223,14 @@ function App() {
       {label}
       {multi ? (
         <textarea
+          aria-label={label}
           value={String(draft[key] ?? "")}
           onChange={(e) => setDraft({ ...draft, [key]: e.target.value })}
           rows={key === "text" ? 9 : 2}
         />
       ) : (
         <input
+          aria-label={label}
           value={String(draft[key] ?? "")}
           onChange={(e) => setDraft({ ...draft, [key]: e.target.value })}
         />
