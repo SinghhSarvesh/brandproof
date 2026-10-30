@@ -1,0 +1,27 @@
+name: Live release evaluation
+on:
+  push:
+    paths: ['.github/workflows/live-evaluation.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install httpx==0.28.1
+      - name: Evaluate fictional public demo with explicit synthetic-data consent
+        run: python scripts/evaluate_live.py --url https://brandproof.onrender.com --consent-synthetic-ai --output live-evaluation.json
+      - name: Record complete public synthetic report
+        run: |
+          python -c "import json; print('EVALUATION_REPORT=' + json.dumps(json.load(open('live-evaluation.json')), separators=(',',':')))"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: live-release-evaluation
+          path: live-evaluation.json
