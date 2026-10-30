@@ -98,6 +98,8 @@ The 40-case synthetic fixture contains 10 controls, 20 clear issues and 10 ambig
 
 ## Documentation
 
+- [Final measured evidence and remaining targets](docs/FINAL_EVIDENCE.md)
+- [Ready-to-paste final form answers](docs/FINAL_FORM_ANSWERS.md)
 - [Round 3 changes and limitations](docs/ROUND3.md)
 - [Architecture](docs/ARCHITECTURE.md)
 - [Privacy, security, accessibility and responsible design](docs/RESPONSIBLE_DESIGN.md)

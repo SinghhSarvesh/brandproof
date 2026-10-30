@@ -11,3 +11,7 @@ Browser tests in `frontend/e2e/judge.spec.ts` cover demo login, creation, checks
 The 40-case detection fixture uses team/AI-authored labels with a retrospective development/validation split, not an independent blind holdout. Ten ambiguous cases are reported separately. Local rules metrics use category/source pairs; live API metrics, if present, use category presence and disclose that difference. Provider failures remain failures rather than being counted as compliant outputs.
 
 The 20 correction pairs comprise 18 expected edits and two expected rejections. Exact-output checks cannot substitute for independent human intent ratings. See the recorded reports for actual measured counts, dates, model identifiers and failures; targets alone are not results.
+
+## Recorded final release
+
+See [FINAL_EVIDENCE.md](FINAL_EVIDENCE.md) for observed counts, live release ID, evaluation results and honest limitations.

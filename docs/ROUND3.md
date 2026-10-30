@@ -28,7 +28,7 @@ PostgreSQL tenant advisory locks serialize source changes, reviews, corrections,
 
 The recorded `docs/evaluation-rules.json` measures only configured rules: 20 true-positive category/source pairs, zero false-positive pairs and zero false-negative pairs on the 30 unambiguous cases. These deliberately narrow fixtures do not establish general accuracy or achievement of the semantic-review target. All 10 ambiguous cases remain available for contextual review.
 
-`evaluation/corrections.json` contains 20 pairs: 18 expected exact edits and two unsafe replacements that must be rejected. Automated tests check these outcomes. This is **not** an 18/20 human intent-preservation result. Independent human assessments and live semantic evaluation remain to be completed before presenting those targets as achieved.
+`evaluation/corrections.json` contains 20 pairs: 18 expected exact edits and two unsafe replacements that must be rejected. Automated tests check these outcomes. This is **not** an 18/20 human intent-preservation result. The live evaluation is now published in evaluation-ai-live.json; independent human assessment remains uncompleted. Neither exact-output checks nor the combined live metrics establish the independent human or standalone semantic targets.
 
 Run from `backend`:
 
@@ -50,12 +50,10 @@ For PostgreSQL integration, set `TEST_DATABASE_URL` to a disposable test databas
 5. As Manager, add an unrelated warranty fact and confirm approval remains. Supersede the battery fact with a different limit; open the revalidation inbox and show that the original approval evidence remains inspectable.
 6. Optional: add a second conflicting active battery fact. Rerun checks and show that the conflict blocks approval. Editing an approved draft also returns it to draft.
 
-## Remaining final-round work
+## Final-round verification and remaining limits
 
-- Run and publish semantic evaluation with the actual configured model; review ambiguous cases and obtain independent correction-intent labels.
-- Obtain real/proxy walkthrough evidence with consent. Do not invent customer interviews or adoption.
-- Team leader: complete organiser-specific participant fields and verify the exact submission deadline.
-- Deploy directly from the existing main branch and verify the public demo against its release commit.
-- Production onboarding, RLS, migrations, background delivery, rate limiting and broader semantic/visual understanding remain outside this change.
+See [FINAL_EVIDENCE.md](FINAL_EVIDENCE.md) for completed deployment, CI, live journey and live AI evaluation. The 40-case live run is published in evaluation-ai-live.json; its measured limitations remain visible. Independent human correction-intent assessment and consented user walkthrough evidence remain uncompleted. The human worksheet is in HUMAN_ASSESSMENT.md. The final report explicitly declares the unmet assessment rather than substituting automated outputs.
 
-AI assistance: implementation, fixtures, tests and this documentation were prepared with ChatGPT/Codex assistance. Team members should review, verify and be able to explain the work; no individual team-member authorship is asserted.
+Production onboarding, RLS, migrations, background delivery, rate limiting and broader semantic/visual understanding remain future work. The leader must confirm registration fields and submit before the supplied 30 October 2026 11:59 PM deadline in the organiser's timezone.
+
+AI assistance: implementation, fixtures, tests and documentation were prepared with ChatGPT/Codex assistance. Team members remain responsible for review and explanation. See DISCLOSURES.md for the pre-existing Round 2 baseline and Round 3 changes.

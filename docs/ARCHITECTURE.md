@@ -12,7 +12,7 @@ Source IDs and quoted passages are checked in code. This proves that evidence ex
 
 Users and sessions use dedicated SQLAlchemy tables. Other prototype entities are stored in a tenant-indexed `records` table with `kind` and JSON payload: source, submission, revision, attachment metadata, review, comment, approval, decision and audit. IDs are server-assigned. Public routes offer no revision-update endpoint: content edits create new records.
 
-This speeds the first milestone but sacrifices database foreign-key enforcement for those relationships. Migrations and normalised tables remain planned. Access control is applied before record retrieval. Source mutations and review decisions use an organisation advisory transaction lock on PostgreSQL. Submission mutation uses row locking. Test their concurrent behavior on PostgreSQL before judging.
+This speeds the first milestone but sacrifices database foreign-key enforcement for those relationships. Migrations and normalised tables remain planned. Access control is applied before record retrieval. Source mutations and review decisions use an organisation advisory transaction lock on PostgreSQL. Submission mutation uses row locking. Four PostgreSQL race-condition integration tests passed in the verified CI run; see FINAL_EVIDENCE.md.
 
 ## AI boundary
 

@@ -1,6 +1,6 @@
 # Final submission checklist and roadmap
 
-Submit once, through team leader **Rakshita Jha**, before the organiser's deadline. The team confirmed the Round 3 build window was open during this work; exact start/end times were not supplied.
+Submit once, through team leader **Rakshita Jha**, before the organiser's deadline. The supplied Round 3 window is 27 October 2026 at 11:59 PM through 30 October 2026 at 11:59 PM. Use the organiser's timezone, which was not stated in the pasted brief. Earlier Round 2 code is disclosed separately in DISCLOSURES.md.
 
 - Working project: https://brandproof.onrender.com/
 - Source repository: https://github.com/SinghhSarvesh/brandproof

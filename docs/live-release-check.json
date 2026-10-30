@@ -1,0 +1,25 @@
+{
+  "checked_at": "2026-10-30T02:19:32.808643+00:00",
+  "checks": {
+    "three_demo_logins": true,
+    "duplicate_save_returns_same_submission": true,
+    "blank_input_rejected": true,
+    "live_ai_review_complete": true,
+    "ranked_evidence_visible": true,
+    "exact_correction_creates_new_revision": true,
+    "duplicate_stale_correction_rejected": true,
+    "repeat_approval_request_safe": true,
+    "separate_reviewer_approval": true,
+    "approval_evidence_available": true,
+    "edit_invalidates_approval": true,
+    "reviewer_inbox_accessible": true
+  },
+  "health": {
+    "status": "ok",
+    "release": "round3-finish",
+    "commit": "d5e50dc5d67bf1ef8d0e139e6e9531c7cc901906"
+  },
+  "submission_id": 378,
+  "model": "openai/gpt-oss-20b",
+  "passed": true
+}
