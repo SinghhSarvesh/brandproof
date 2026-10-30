@@ -1,0 +1,1227 @@
+{
+  "started_at": "2026-10-30T07:33:55.765816+00:00",
+  "url": "https://brandproof.onrender.com",
+  "unit": "unique finding category per submission",
+  "disclosure": "AI-assisted synthetic labels; retrospective split, not independent held-out validation. Ambiguous cases excluded from precision/recall. Failures are reported separately.",
+  "cases": [
+    {
+      "id": "compliant-01",
+      "group": "compliant",
+      "split": "development",
+      "expected": [],
+      "submission_id": 583,
+      "revision_id": 584,
+      "review_id": 587,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [],
+      "findings": [],
+      "error": "",
+      "seconds": 0.47
+    },
+    {
+      "id": "compliant-02",
+      "group": "compliant",
+      "split": "validation",
+      "expected": [],
+      "submission_id": 589,
+      "revision_id": 590,
+      "review_id": 593,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [],
+      "findings": [],
+      "error": "",
+      "seconds": 0.44
+    },
+    {
+      "id": "compliant-03",
+      "group": "compliant",
+      "split": "development",
+      "expected": [],
+      "submission_id": 595,
+      "revision_id": 596,
+      "review_id": 599,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [],
+      "findings": [],
+      "error": "",
+      "seconds": 0.42
+    },
+    {
+      "id": "compliant-04",
+      "group": "compliant",
+      "split": "validation",
+      "expected": [],
+      "submission_id": 601,
+      "revision_id": 602,
+      "review_id": 605,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [],
+      "findings": [],
+      "error": "",
+      "seconds": 0.41
+    },
+    {
+      "id": "compliant-05",
+      "group": "compliant",
+      "split": "development",
+      "expected": [],
+      "submission_id": 607,
+      "revision_id": 608,
+      "review_id": 611,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [],
+      "findings": [],
+      "error": "",
+      "seconds": 0.47
+    },
+    {
+      "id": "compliant-06",
+      "group": "compliant",
+      "split": "validation",
+      "expected": [],
+      "submission_id": 613,
+      "revision_id": 614,
+      "review_id": 617,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [],
+      "findings": [],
+      "error": "",
+      "seconds": 0.86
+    },
+    {
+      "id": "compliant-07",
+      "group": "compliant",
+      "split": "development",
+      "expected": [],
+      "submission_id": 619,
+      "revision_id": 620,
+      "review_id": 627,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [],
+      "findings": [],
+      "error": "",
+      "seconds": 0.5
+    },
+    {
+      "id": "compliant-08",
+      "group": "compliant",
+      "split": "validation",
+      "expected": [],
+      "submission_id": 629,
+      "revision_id": 630,
+      "review_id": 637,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [],
+      "findings": [],
+      "error": "",
+      "seconds": 0.42
+    },
+    {
+      "id": "compliant-09",
+      "group": "compliant",
+      "split": "development",
+      "expected": [],
+      "submission_id": 643,
+      "revision_id": 644,
+      "review_id": 647,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [],
+      "findings": [],
+      "error": "",
+      "seconds": 0.47
+    },
+    {
+      "id": "compliant-10",
+      "group": "compliant",
+      "split": "validation",
+      "expected": [],
+      "submission_id": 657,
+      "revision_id": 658,
+      "review_id": 663,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [],
+      "findings": [],
+      "error": "",
+      "seconds": 0.41
+    },
+    {
+      "id": "clear_issue-01",
+      "group": "clear_issue",
+      "split": "development",
+      "expected": [
+        "contradiction"
+      ],
+      "submission_id": 665,
+      "revision_id": 666,
+      "review_id": 670,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "contradiction"
+      ],
+      "findings": [
+        {
+          "category": "contradiction",
+          "quote": "20 hours",
+          "source_id": 1,
+          "source_title": "Battery life specification",
+          "source_version": 1,
+          "evidence": "Up to 12 hours of battery life.",
+          "explanation": "The numeric claim differs from the approved fact. Review the full statement and its qualifiers.",
+          "suggestion": "up to 12 hours",
+          "severity": "high",
+          "index": 0
+        }
+      ],
+      "error": "",
+      "seconds": 0.47
+    },
+    {
+      "id": "clear_issue-02",
+      "group": "clear_issue",
+      "split": "validation",
+      "expected": [
+        "contradiction"
+      ],
+      "submission_id": 674,
+      "revision_id": 675,
+      "review_id": 678,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "contradiction"
+      ],
+      "findings": [
+        {
+          "category": "contradiction",
+          "quote": "18 hours",
+          "source_id": 1,
+          "source_title": "Battery life specification",
+          "source_version": 1,
+          "evidence": "Up to 12 hours of battery life.",
+          "explanation": "The numeric claim differs from the approved fact. Review the full statement and its qualifiers.",
+          "suggestion": "up to 12 hours",
+          "severity": "high",
+          "index": 0
+        }
+      ],
+      "error": "",
+      "seconds": 0.44
+    },
+    {
+      "id": "clear_issue-03",
+      "group": "clear_issue",
+      "split": "development",
+      "expected": [
+        "contradiction"
+      ],
+      "submission_id": 680,
+      "revision_id": 681,
+      "review_id": 686,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "contradiction"
+      ],
+      "findings": [
+        {
+          "category": "contradiction",
+          "quote": "24 hours",
+          "source_id": 1,
+          "source_title": "Battery life specification",
+          "source_version": 1,
+          "evidence": "Up to 12 hours of battery life.",
+          "explanation": "The numeric claim differs from the approved fact. Review the full statement and its qualifiers.",
+          "suggestion": "up to 12 hours",
+          "severity": "high",
+          "index": 0
+        }
+      ],
+      "error": "",
+      "seconds": 0.86
+    },
+    {
+      "id": "clear_issue-04",
+      "group": "clear_issue",
+      "split": "validation",
+      "expected": [
+        "contradiction"
+      ],
+      "submission_id": 688,
+      "revision_id": 689,
+      "review_id": 692,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "contradiction"
+      ],
+      "findings": [
+        {
+          "category": "contradiction",
+          "quote": "16 hours",
+          "source_id": 1,
+          "source_title": "Battery life specification",
+          "source_version": 1,
+          "evidence": "Up to 12 hours of battery life.",
+          "explanation": "The numeric claim differs from the approved fact. Review the full statement and its qualifiers.",
+          "suggestion": "up to 12 hours",
+          "severity": "high",
+          "index": 0
+        }
+      ],
+      "error": "",
+      "seconds": 0.43
+    },
+    {
+      "id": "clear_issue-05",
+      "group": "clear_issue",
+      "split": "development",
+      "expected": [
+        "contradiction"
+      ],
+      "submission_id": 694,
+      "revision_id": 695,
+      "review_id": 698,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "contradiction"
+      ],
+      "findings": [
+        {
+          "category": "contradiction",
+          "quote": "15 hours",
+          "source_id": 1,
+          "source_title": "Battery life specification",
+          "source_version": 1,
+          "evidence": "Up to 12 hours of battery life.",
+          "explanation": "The numeric claim differs from the approved fact. Review the full statement and its qualifiers.",
+          "suggestion": "up to 12 hours",
+          "severity": "high",
+          "index": 0
+        }
+      ],
+      "error": "",
+      "seconds": 0.41
+    },
+    {
+      "id": "clear_issue-06",
+      "group": "clear_issue",
+      "split": "validation",
+      "expected": [
+        "contradiction"
+      ],
+      "submission_id": 700,
+      "revision_id": 701,
+      "review_id": 704,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "contradiction"
+      ],
+      "findings": [
+        {
+          "category": "contradiction",
+          "quote": "19 hours",
+          "source_id": 1,
+          "source_title": "Battery life specification",
+          "source_version": 1,
+          "evidence": "Up to 12 hours of battery life.",
+          "explanation": "The numeric claim differs from the approved fact. Review the full statement and its qualifiers.",
+          "suggestion": "up to 12 hours",
+          "severity": "high",
+          "index": 0
+        }
+      ],
+      "error": "",
+      "seconds": 0.43
+    },
+    {
+      "id": "clear_issue-07",
+      "group": "clear_issue",
+      "split": "development",
+      "expected": [
+        "contradiction"
+      ],
+      "submission_id": 706,
+      "revision_id": 707,
+      "review_id": 710,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "contradiction"
+      ],
+      "findings": [
+        {
+          "category": "contradiction",
+          "quote": "30 hours",
+          "source_id": 1,
+          "source_title": "Battery life specification",
+          "source_version": 1,
+          "evidence": "Up to 12 hours of battery life.",
+          "explanation": "The numeric claim differs from the approved fact. Review the full statement and its qualifiers.",
+          "suggestion": "up to 12 hours",
+          "severity": "high",
+          "index": 0
+        }
+      ],
+      "error": "",
+      "seconds": 0.41
+    },
+    {
+      "id": "clear_issue-08",
+      "group": "clear_issue",
+      "split": "validation",
+      "expected": [
+        "contradiction"
+      ],
+      "submission_id": 712,
+      "revision_id": 713,
+      "review_id": 716,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "contradiction"
+      ],
+      "findings": [
+        {
+          "category": "contradiction",
+          "quote": "22 hours",
+          "source_id": 1,
+          "source_title": "Battery life specification",
+          "source_version": 1,
+          "evidence": "Up to 12 hours of battery life.",
+          "explanation": "The numeric claim differs from the approved fact. Review the full statement and its qualifiers.",
+          "suggestion": "up to 12 hours",
+          "severity": "high",
+          "index": 0
+        }
+      ],
+      "error": "",
+      "seconds": 0.47
+    },
+    {
+      "id": "clear_issue-09",
+      "group": "clear_issue",
+      "split": "development",
+      "expected": [
+        "terminology"
+      ],
+      "submission_id": 718,
+      "revision_id": 719,
+      "review_id": 722,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "terminology"
+      ],
+      "findings": [
+        {
+          "category": "terminology",
+          "quote": "NS1",
+          "source_id": 4,
+          "source_title": "Product naming",
+          "source_version": 1,
+          "evidence": "Use Northstar One as the product name.",
+          "explanation": "Use Northstar One as the product name.",
+          "suggestion": "Northstar One",
+          "severity": "medium",
+          "index": 0
+        }
+      ],
+      "error": "",
+      "seconds": 0.58
+    },
+    {
+      "id": "clear_issue-10",
+      "group": "clear_issue",
+      "split": "validation",
+      "expected": [
+        "terminology"
+      ],
+      "submission_id": 724,
+      "revision_id": 725,
+      "review_id": 728,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "terminology"
+      ],
+      "findings": [
+        {
+          "category": "terminology",
+          "quote": "NS1",
+          "source_id": 4,
+          "source_title": "Product naming",
+          "source_version": 1,
+          "evidence": "Use Northstar One as the product name.",
+          "explanation": "Use Northstar One as the product name.",
+          "suggestion": "Northstar One",
+          "severity": "medium",
+          "index": 0
+        }
+      ],
+      "error": "",
+      "seconds": 0.43
+    },
+    {
+      "id": "clear_issue-11",
+      "group": "clear_issue",
+      "split": "development",
+      "expected": [
+        "terminology"
+      ],
+      "submission_id": 730,
+      "revision_id": 731,
+      "review_id": 734,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "terminology"
+      ],
+      "findings": [
+        {
+          "category": "terminology",
+          "quote": "NS1",
+          "source_id": 4,
+          "source_title": "Product naming",
+          "source_version": 1,
+          "evidence": "Use Northstar One as the product name.",
+          "explanation": "Use Northstar One as the product name.",
+          "suggestion": "Northstar One",
+          "severity": "medium",
+          "index": 0
+        }
+      ],
+      "error": "",
+      "seconds": 0.41
+    },
+    {
+      "id": "clear_issue-12",
+      "group": "clear_issue",
+      "split": "validation",
+      "expected": [
+        "terminology"
+      ],
+      "submission_id": 740,
+      "revision_id": 741,
+      "review_id": 744,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "terminology"
+      ],
+      "findings": [
+        {
+          "category": "terminology",
+          "quote": "NS1",
+          "source_id": 4,
+          "source_title": "Product naming",
+          "source_version": 1,
+          "evidence": "Use Northstar One as the product name.",
+          "explanation": "Use Northstar One as the product name.",
+          "suggestion": "Northstar One",
+          "severity": "medium",
+          "index": 0
+        }
+      ],
+      "error": "",
+      "seconds": 0.81
+    },
+    {
+      "id": "clear_issue-13",
+      "group": "clear_issue",
+      "split": "development",
+      "expected": [
+        "terminology"
+      ],
+      "submission_id": 748,
+      "revision_id": 749,
+      "review_id": 756,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "terminology"
+      ],
+      "findings": [
+        {
+          "category": "terminology",
+          "quote": "NS1",
+          "source_id": 4,
+          "source_title": "Product naming",
+          "source_version": 1,
+          "evidence": "Use Northstar One as the product name.",
+          "explanation": "Use Northstar One as the product name.",
+          "suggestion": "Northstar One",
+          "severity": "medium",
+          "index": 0
+        }
+      ],
+      "error": "",
+      "seconds": 0.47
+    },
+    {
+      "id": "clear_issue-14",
+      "group": "clear_issue",
+      "split": "validation",
+      "expected": [
+        "terminology"
+      ],
+      "submission_id": 760,
+      "revision_id": 761,
+      "review_id": 770,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "terminology"
+      ],
+      "findings": [
+        {
+          "category": "terminology",
+          "quote": "NS1",
+          "source_id": 4,
+          "source_title": "Product naming",
+          "source_version": 1,
+          "evidence": "Use Northstar One as the product name.",
+          "explanation": "Use Northstar One as the product name.",
+          "suggestion": "Northstar One",
+          "severity": "medium",
+          "index": 0
+        }
+      ],
+      "error": "",
+      "seconds": 0.41
+    },
+    {
+      "id": "clear_issue-15",
+      "group": "clear_issue",
+      "split": "development",
+      "expected": [
+        "unsupported_claim"
+      ],
+      "submission_id": 772,
+      "revision_id": 773,
+      "review_id": 782,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "unsupported_claim"
+      ],
+      "findings": [
+        {
+          "category": "unsupported_claim",
+          "quote": "India's No. 1",
+          "source_id": 3,
+          "source_title": "Ranking claims policy ASCII",
+          "source_version": 1,
+          "evidence": "Ranking claims require current approved substantiation. No approved ranking evidence exists for this demo.",
+          "explanation": "Ranking claims require current approved substantiation. No approved ranking evidence exists for this demo.",
+          "suggestion": "",
+          "severity": "high",
+          "index": 0
+        }
+      ],
+      "error": "",
+      "seconds": 0.81
+    },
+    {
+      "id": "clear_issue-16",
+      "group": "clear_issue",
+      "split": "validation",
+      "expected": [
+        "unsupported_claim"
+      ],
+      "submission_id": 788,
+      "revision_id": 789,
+      "review_id": 794,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "unsupported_claim"
+      ],
+      "findings": [
+        {
+          "category": "unsupported_claim",
+          "quote": "No. 1 choice.",
+          "source_id": 2,
+          "source_title": "Ranking claims policy",
+          "source_version": 1,
+          "evidence": "Ranking claims require current approved substantiation. No approved ranking evidence exists for this demo.",
+          "explanation": "The draft makes a ranking claim (“No. 1 choice”) without approved substantiation, violating the ranking claims policy.",
+          "suggestion": "top choice",
+          "severity": "high",
+          "index": 0
+        }
+      ],
+      "error": "",
+      "seconds": 0.79
+    },
+    {
+      "id": "clear_issue-17",
+      "group": "clear_issue",
+      "split": "development",
+      "expected": [
+        "unsupported_claim"
+      ],
+      "submission_id": 800,
+      "revision_id": 801,
+      "review_id": 804,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "terminology",
+        "unsupported_claim"
+      ],
+      "findings": [
+        {
+          "category": "terminology",
+          "quote": "Our No. 1 device is here.",
+          "source_id": 4,
+          "source_title": "Product naming",
+          "source_version": 1,
+          "evidence": "Use Northstar One as the product name.",
+          "explanation": "The draft does not use the required product name \"Northstar One\" as mandated by the term rule.",
+          "suggestion": "Our Northstar One is here.",
+          "severity": "medium",
+          "index": 0
+        },
+        {
+          "category": "unsupported_claim",
+          "quote": "Our No. 1 device is here.",
+          "source_id": 2,
+          "source_title": "Ranking claims policy",
+          "source_version": 1,
+          "evidence": "Ranking claims require current approved substantiation. No approved ranking evidence exists for this demo.",
+          "explanation": "The draft makes an unsupported ranking claim \"No. 1\" without approved evidence.",
+          "suggestion": "Our device is here.",
+          "severity": "high",
+          "index": 1
+        }
+      ],
+      "error": "",
+      "seconds": 0.42
+    },
+    {
+      "id": "clear_issue-18",
+      "group": "clear_issue",
+      "split": "validation",
+      "expected": [
+        "unsupported_claim"
+      ],
+      "submission_id": 808,
+      "revision_id": 809,
+      "review_id": 812,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "unsupported_claim"
+      ],
+      "findings": [
+        {
+          "category": "unsupported_claim",
+          "quote": "Choose the No. 1 product.",
+          "source_id": 2,
+          "source_title": "Ranking claims policy",
+          "source_version": 1,
+          "evidence": "Ranking claims require current approved substantiation. No approved ranking evidence exists for this demo.",
+          "explanation": "The draft asserts a ranking claim by stating \"No. 1\" without providing any approved evidence, directly violating the ranking claims policy which requires substantiation for such claims.",
+          "suggestion": "Choose the product.",
+          "severity": "high",
+          "index": 0
+        }
+      ],
+      "error": "",
+      "seconds": 1.77
+    },
+    {
+      "id": "clear_issue-19",
+      "group": "clear_issue",
+      "split": "development",
+      "expected": [
+        "unsupported_claim"
+      ],
+      "submission_id": 814,
+      "revision_id": 815,
+      "review_id": 818,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "unsupported_claim"
+      ],
+      "findings": [
+        {
+          "category": "unsupported_claim",
+          "quote": "The No. 1 launch today.",
+          "source_id": 2,
+          "source_title": "Ranking claims policy",
+          "source_version": 1,
+          "evidence": "Ranking claims require current approved substantiation. No approved ranking evidence exists for this demo.",
+          "explanation": "The draft makes an unsupported ranking claim by stating \"No. 1\" without any approved evidence, violating the ranking claims policy.",
+          "suggestion": "The Northstar One launch today.",
+          "severity": "high",
+          "index": 0
+        }
+      ],
+      "error": "",
+      "seconds": 2.21
+    },
+    {
+      "id": "clear_issue-20",
+      "group": "clear_issue",
+      "split": "validation",
+      "expected": [
+        "unsupported_claim"
+      ],
+      "submission_id": 820,
+      "revision_id": 821,
+      "review_id": 824,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "unsupported_claim"
+      ],
+      "findings": [
+        {
+          "category": "unsupported_claim",
+          "quote": "No. 1 device.",
+          "source_id": 2,
+          "source_title": "Ranking claims policy",
+          "source_version": 1,
+          "evidence": "Ranking claims require current approved substantiation. No approved ranking evidence exists for this demo.",
+          "explanation": "The draft makes an unsupported ranking claim by stating \"No. 1 device\" without any approved evidence, violating the ranking claims policy.",
+          "suggestion": "Northstar One",
+          "severity": "high",
+          "index": 0
+        }
+      ],
+      "error": "",
+      "seconds": 3.88
+    },
+    {
+      "id": "ambiguous-01",
+      "group": "ambiguous",
+      "split": "development",
+      "expected": [],
+      "submission_id": 826,
+      "revision_id": 827,
+      "review_id": 830,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "contradiction"
+      ],
+      "findings": [
+        {
+          "category": "contradiction",
+          "quote": "keeps going all day",
+          "source_id": 1,
+          "source_title": "Battery life specification",
+          "source_version": 1,
+          "evidence": "Up to 12 hours of battery life",
+          "explanation": "The draft claims the battery lasts all day, which contradicts the fact that the battery life is up to 12 hours.",
+          "suggestion": "up to 12 hours of battery life",
+          "severity": "high",
+          "index": 0
+        }
+      ],
+      "error": "",
+      "seconds": 1.73
+    },
+    {
+      "id": "ambiguous-02",
+      "group": "ambiguous",
+      "split": "validation",
+      "expected": [],
+      "submission_id": 832,
+      "revision_id": 833,
+      "review_id": 836,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [],
+      "findings": [],
+      "error": "",
+      "seconds": 1.27
+    },
+    {
+      "id": "ambiguous-03",
+      "group": "ambiguous",
+      "split": "development",
+      "expected": [],
+      "submission_id": 838,
+      "revision_id": 839,
+      "review_id": 842,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "contradiction"
+      ],
+      "findings": [
+        {
+          "category": "contradiction",
+          "quote": "Enjoy 12 hours of battery life.",
+          "source_id": 1,
+          "source_title": "Battery life specification",
+          "source_version": 1,
+          "evidence": "Up to 12 hours of battery life.",
+          "explanation": "The source states the battery life is \"up to 12 hours,\" indicating a maximum, whereas the draft claims exactly 12 hours, removing the qualifier and presenting a conflicting assertion.",
+          "suggestion": "Enjoy up to 12 hours of battery life.",
+          "severity": "medium",
+          "index": 0
+        }
+      ],
+      "error": "",
+      "seconds": 1.94
+    },
+    {
+      "id": "ambiguous-04",
+      "group": "ambiguous",
+      "split": "validation",
+      "expected": [],
+      "submission_id": 844,
+      "revision_id": 845,
+      "review_id": 848,
+      "status": "incomplete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "failed"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [],
+      "findings": [],
+      "error": "The AI provider's rate or usage limit was reached. Check provider limits before retrying. [AI_HTTP_429] This review remains incomplete.",
+      "seconds": 0.75
+    },
+    {
+      "id": "ambiguous-05",
+      "group": "ambiguous",
+      "split": "development",
+      "expected": [],
+      "submission_id": 850,
+      "revision_id": 851,
+      "review_id": 854,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [],
+      "findings": [],
+      "error": "",
+      "seconds": 1.54
+    },
+    {
+      "id": "ambiguous-06",
+      "group": "ambiguous",
+      "split": "validation",
+      "expected": [],
+      "submission_id": 856,
+      "revision_id": 857,
+      "review_id": 860,
+      "status": "incomplete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "failed"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [],
+      "findings": [],
+      "error": "The AI provider's rate or usage limit was reached. Check provider limits before retrying. [AI_HTTP_429] This review remains incomplete.",
+      "seconds": 0.65
+    },
+    {
+      "id": "ambiguous-07",
+      "group": "ambiguous",
+      "split": "development",
+      "expected": [],
+      "submission_id": 862,
+      "revision_id": 863,
+      "review_id": 866,
+      "status": "incomplete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "failed"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [],
+      "findings": [],
+      "error": "The AI provider's rate or usage limit was reached. Check provider limits before retrying. [AI_HTTP_429] This review remains incomplete.",
+      "seconds": 0.7
+    },
+    {
+      "id": "ambiguous-08",
+      "group": "ambiguous",
+      "split": "validation",
+      "expected": [],
+      "submission_id": 868,
+      "revision_id": 869,
+      "review_id": 872,
+      "status": "incomplete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "failed"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "terminology"
+      ],
+      "findings": [
+        {
+          "category": "terminology",
+          "quote": "NS1",
+          "source_id": 4,
+          "source_title": "Product naming",
+          "source_version": 1,
+          "evidence": "Use Northstar One as the product name.",
+          "explanation": "Use Northstar One as the product name.",
+          "suggestion": "Northstar One",
+          "severity": "medium",
+          "index": 0
+        }
+      ],
+      "error": "The AI provider's rate or usage limit was reached. Check provider limits before retrying. [AI_HTTP_429] This review remains incomplete.",
+      "seconds": 0.7
+    },
+    {
+      "id": "ambiguous-09",
+      "group": "ambiguous",
+      "split": "development",
+      "expected": [],
+      "submission_id": 874,
+      "revision_id": 875,
+      "review_id": 878,
+      "status": "incomplete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "failed"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "contradiction"
+      ],
+      "findings": [
+        {
+          "category": "contradiction",
+          "quote": "20 hours",
+          "source_id": 1,
+          "source_title": "Battery life specification",
+          "source_version": 1,
+          "evidence": "Up to 12 hours of battery life.",
+          "explanation": "The numeric claim differs from the approved fact. Review the full statement and its qualifiers.",
+          "suggestion": "up to 12 hours",
+          "severity": "high",
+          "index": 0
+        }
+      ],
+      "error": "The AI provider's rate or usage limit was reached. Check provider limits before retrying. [AI_HTTP_429] This review remains incomplete.",
+      "seconds": 0.66
+    },
+    {
+      "id": "ambiguous-10",
+      "group": "ambiguous",
+      "split": "validation",
+      "expected": [],
+      "submission_id": 880,
+      "revision_id": 881,
+      "review_id": 884,
+      "status": "incomplete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "failed"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [],
+      "findings": [],
+      "error": "The AI provider's rate or usage limit was reached. Check provider limits before retrying. [AI_HTTP_429] This review remains incomplete.",
+      "seconds": 0.54
+    }
+  ],
+  "release": {
+    "status": "ok",
+    "release": "round3-finish",
+    "commit": "4503217e8cf6fbf44cf70011dff4a49afb429e8f"
+  },
+  "configuration": {
+    "email": "creator@brandproof.demo",
+    "role": "creator",
+    "org": "northstar",
+    "review_mode": "ai",
+    "ai_provider": "Groq"
+  },
+  "finished_at": "2026-10-30T07:34:30.588032+00:00",
+  "categories": {
+    "contradiction": {
+      "tp": 8,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1,
+      "recall": 1
+    },
+    "terminology": {
+      "tp": 6,
+      "fp": 1,
+      "fn": 0,
+      "precision": 0.8571428571428571,
+      "recall": 1
+    },
+    "unsupported_claim": {
+      "tp": 6,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1,
+      "recall": 1
+    }
+  },
+  "overall": {
+    "tp": 20,
+    "fp": 1,
+    "fn": 0,
+    "precision": 0.9523809523809523,
+    "recall": 1
+  },
+  "complete": 34,
+  "incomplete": 6,
+  "control_false_alarms": 0
+}

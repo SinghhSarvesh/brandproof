@@ -1,0 +1,1580 @@
+{
+  "started_at": "2026-10-30T02:17:20.285192+00:00",
+  "url": "https://brandproof.onrender.com",
+  "unit": "unique finding category per submission",
+  "disclosure": "AI-assisted synthetic labels; retrospective split, not independent held-out validation. Ambiguous cases excluded from precision/recall. Failures are reported separately.",
+  "cases": [
+    {
+      "id": "compliant-01",
+      "group": "compliant",
+      "split": "development",
+      "expected": [],
+      "submission_id": 320,
+      "revision_id": 321,
+      "review_id": 324,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [],
+      "findings": [],
+      "error": "",
+      "seconds": 17.21
+    },
+    {
+      "id": "compliant-02",
+      "group": "compliant",
+      "split": "validation",
+      "expected": [],
+      "submission_id": 326,
+      "revision_id": 327,
+      "review_id": 330,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "messaging"
+      ],
+      "findings": [
+        {
+          "category": "messaging",
+          "quote": "Enjoy up to 12 hours of battery life.",
+          "source_id": 4,
+          "source_title": "Product naming",
+          "source_version": 1,
+          "evidence": "Use Northstar One as the product name.",
+          "explanation": "The draft does not mention the product name \"Northstar One\", which is required by source 4 for announcements of this product.",
+          "suggestion": "Add the product name to the announcement, e.g., \"Enjoy up to 12 hours of battery life on the Northstar One.\"",
+          "severity": "low",
+          "index": 0
+        }
+      ],
+      "error": "",
+      "seconds": 9.85
+    },
+    {
+      "id": "compliant-03",
+      "group": "compliant",
+      "split": "development",
+      "expected": [],
+      "submission_id": 332,
+      "revision_id": 333,
+      "review_id": 336,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [],
+      "findings": [],
+      "error": "",
+      "seconds": 10.0
+    },
+    {
+      "id": "compliant-04",
+      "group": "compliant",
+      "split": "validation",
+      "expected": [],
+      "submission_id": 338,
+      "revision_id": 339,
+      "review_id": 346,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "messaging"
+      ],
+      "findings": [
+        {
+          "category": "messaging",
+          "quote": "Explore our new launch.",
+          "source_id": 4,
+          "source_title": "Product naming",
+          "source_version": 1,
+          "evidence": "Use Northstar One as the product name.",
+          "explanation": "The draft does not mention the required product name \"Northstar One\", which is a key part of the announcement purpose. This omission makes the message incomplete and potentially confusing for customers.",
+          "suggestion": "Add the product name to the draft, e.g., \"Explore our new launch of Northstar One.\"",
+          "severity": "medium",
+          "index": 0
+        }
+      ],
+      "error": "",
+      "seconds": 13.66
+    },
+    {
+      "id": "compliant-05",
+      "group": "compliant",
+      "split": "development",
+      "expected": [],
+      "submission_id": 350,
+      "revision_id": 351,
+      "review_id": 354,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [],
+      "findings": [],
+      "error": "",
+      "seconds": 17.18
+    },
+    {
+      "id": "compliant-06",
+      "group": "compliant",
+      "split": "validation",
+      "expected": [],
+      "submission_id": 356,
+      "revision_id": 357,
+      "review_id": 360,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [],
+      "findings": [],
+      "error": "",
+      "seconds": 9.22
+    },
+    {
+      "id": "compliant-07",
+      "group": "compliant",
+      "split": "development",
+      "expected": [],
+      "submission_id": 362,
+      "revision_id": 363,
+      "review_id": 366,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "messaging"
+      ],
+      "findings": [
+        {
+          "category": "messaging",
+          "quote": "Explore the product details.",
+          "source_id": 4,
+          "source_title": "Product naming",
+          "source_version": 1,
+          "evidence": "Use Northstar One as the product name.",
+          "explanation": "The draft does not reference the product name, which is required by the brand naming source. This omission makes the announcement incomplete and potentially confusing for customers.",
+          "suggestion": "Include the product name in the announcement, e.g., \"Explore the Northstar One product details.\"",
+          "severity": "medium",
+          "index": 0
+        }
+      ],
+      "error": "",
+      "seconds": 13.92
+    },
+    {
+      "id": "compliant-08",
+      "group": "compliant",
+      "split": "validation",
+      "expected": [],
+      "submission_id": 368,
+      "revision_id": 369,
+      "review_id": 372,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [],
+      "findings": [],
+      "error": "",
+      "seconds": 13.19
+    },
+    {
+      "id": "compliant-09",
+      "group": "compliant",
+      "split": "development",
+      "expected": [],
+      "submission_id": 374,
+      "revision_id": 375,
+      "review_id": 395,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [],
+      "findings": [],
+      "error": "",
+      "seconds": 14.86
+    },
+    {
+      "id": "compliant-10",
+      "group": "compliant",
+      "split": "validation",
+      "expected": [],
+      "submission_id": 397,
+      "revision_id": 398,
+      "review_id": 401,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [],
+      "findings": [],
+      "error": "",
+      "seconds": 17.03
+    },
+    {
+      "id": "clear_issue-01",
+      "group": "clear_issue",
+      "split": "development",
+      "expected": [
+        "contradiction"
+      ],
+      "submission_id": 403,
+      "revision_id": 404,
+      "review_id": 407,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "contradiction"
+      ],
+      "findings": [
+        {
+          "category": "contradiction",
+          "quote": "20 hours",
+          "source_id": 1,
+          "source_title": "Battery life specification",
+          "source_version": 1,
+          "evidence": "Up to 12 hours of battery life.",
+          "explanation": "The numeric claim differs from the approved fact. Review the full statement and its qualifiers.",
+          "suggestion": "up to 12 hours",
+          "severity": "high",
+          "index": 0
+        },
+        {
+          "category": "contradiction",
+          "quote": "Experience 20 hours of battery life.",
+          "source_id": 1,
+          "source_title": "Battery life specification",
+          "source_version": 1,
+          "evidence": "Up to 12 hours of battery life.",
+          "explanation": "The draft claims 20 hours of battery life, which contradicts the source stating the device offers up to 12 hours. The claim exceeds the documented specification.",
+          "suggestion": "Adjust the claim to reflect the documented 12 hours of battery life, e.g., \"Experience up to 12 hours of battery life.\"",
+          "severity": "high",
+          "index": 1
+        }
+      ],
+      "error": "",
+      "seconds": 17.03
+    },
+    {
+      "id": "clear_issue-02",
+      "group": "clear_issue",
+      "split": "validation",
+      "expected": [
+        "contradiction"
+      ],
+      "submission_id": 409,
+      "revision_id": 410,
+      "review_id": 413,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "contradiction"
+      ],
+      "findings": [
+        {
+          "category": "contradiction",
+          "quote": "18 hours",
+          "source_id": 1,
+          "source_title": "Battery life specification",
+          "source_version": 1,
+          "evidence": "Up to 12 hours of battery life.",
+          "explanation": "The numeric claim differs from the approved fact. Review the full statement and its qualifiers.",
+          "suggestion": "up to 12 hours",
+          "severity": "high",
+          "index": 0
+        },
+        {
+          "category": "contradiction",
+          "quote": "Battery life lasts 18 hours.",
+          "source_id": 1,
+          "source_title": "Battery life specification",
+          "source_version": 1,
+          "evidence": "Up to 12 hours of battery life.",
+          "explanation": "The draft claims 18 hours of battery life, which directly conflicts with source 1 stating the maximum battery life is 12 hours.",
+          "suggestion": "Revise the claim to reflect the accurate battery life of up to 12 hours, or provide a qualified statement if 18 hours applies under specific conditions.",
+          "severity": "high",
+          "index": 1
+        }
+      ],
+      "error": "",
+      "seconds": 17.32
+    },
+    {
+      "id": "clear_issue-03",
+      "group": "clear_issue",
+      "split": "development",
+      "expected": [
+        "contradiction"
+      ],
+      "submission_id": 415,
+      "revision_id": 416,
+      "review_id": 419,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "contradiction"
+      ],
+      "findings": [
+        {
+          "category": "contradiction",
+          "quote": "24 hours",
+          "source_id": 1,
+          "source_title": "Battery life specification",
+          "source_version": 1,
+          "evidence": "Up to 12 hours of battery life.",
+          "explanation": "The numeric claim differs from the approved fact. Review the full statement and its qualifiers.",
+          "suggestion": "up to 12 hours",
+          "severity": "high",
+          "index": 0
+        },
+        {
+          "category": "contradiction",
+          "quote": "Get 24 hours of battery life.",
+          "source_id": 1,
+          "source_title": "Battery life specification",
+          "source_version": 1,
+          "evidence": "Up to 12 hours of battery life.",
+          "explanation": "The draft claims 24 hours of battery life, while the source specifies a maximum of 12 hours, directly contradicting the factual information.",
+          "suggestion": "Adjust the claim to reflect the accurate battery life of up to 12 hours.",
+          "severity": "high",
+          "index": 1
+        }
+      ],
+      "error": "",
+      "seconds": 17.4
+    },
+    {
+      "id": "clear_issue-04",
+      "group": "clear_issue",
+      "split": "validation",
+      "expected": [
+        "contradiction"
+      ],
+      "submission_id": 421,
+      "revision_id": 422,
+      "review_id": 425,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "contradiction",
+        "messaging"
+      ],
+      "findings": [
+        {
+          "category": "contradiction",
+          "quote": "16 hours",
+          "source_id": 1,
+          "source_title": "Battery life specification",
+          "source_version": 1,
+          "evidence": "Up to 12 hours of battery life.",
+          "explanation": "The numeric claim differs from the approved fact. Review the full statement and its qualifiers.",
+          "suggestion": "up to 12 hours",
+          "severity": "high",
+          "index": 0
+        },
+        {
+          "category": "contradiction",
+          "quote": "Enjoy 16 hours of battery life.",
+          "source_id": 1,
+          "source_title": "Battery life specification",
+          "source_version": 1,
+          "evidence": "Up to 12 hours of battery life.",
+          "explanation": "The draft claims 16 hours of battery life, while the source states the maximum is 12 hours, directly contradicting the claim.",
+          "suggestion": "Adjust the claim to reflect the accurate battery life of up to 12 hours or remove the specific duration.",
+          "severity": "high",
+          "index": 1
+        },
+        {
+          "category": "messaging",
+          "quote": "Enjoy 16 hours of battery life.",
+          "source_id": 4,
+          "source_title": "Product naming",
+          "source_version": 1,
+          "evidence": "Use Northstar One as the product name.",
+          "explanation": "The draft does not mention the product name Northstar One, which is required for the announcement.",
+          "suggestion": "Include the product name, e.g., \"Enjoy 12 hours of battery life on the Northstar One.\"",
+          "severity": "medium",
+          "index": 2
+        }
+      ],
+      "error": "",
+      "seconds": 17.93
+    },
+    {
+      "id": "clear_issue-05",
+      "group": "clear_issue",
+      "split": "development",
+      "expected": [
+        "contradiction"
+      ],
+      "submission_id": 427,
+      "revision_id": 428,
+      "review_id": 431,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "contradiction"
+      ],
+      "findings": [
+        {
+          "category": "contradiction",
+          "quote": "15 hours",
+          "source_id": 1,
+          "source_title": "Battery life specification",
+          "source_version": 1,
+          "evidence": "Up to 12 hours of battery life.",
+          "explanation": "The numeric claim differs from the approved fact. Review the full statement and its qualifiers.",
+          "suggestion": "up to 12 hours",
+          "severity": "high",
+          "index": 0
+        },
+        {
+          "category": "contradiction",
+          "quote": "Battery life: 15 hours.",
+          "source_id": 1,
+          "source_title": "Battery life specification",
+          "source_version": 1,
+          "evidence": "Up to 12 hours of battery life.",
+          "explanation": "The draft claims 15 hours of battery life, which exceeds the maximum 12 hours stated in source 1, directly contradicting the factual specification.",
+          "suggestion": "Adjust the battery life claim to match the source, e.g., \"Battery life: up to 12 hours.\"",
+          "severity": "high",
+          "index": 1
+        }
+      ],
+      "error": "",
+      "seconds": 16.01
+    },
+    {
+      "id": "clear_issue-06",
+      "group": "clear_issue",
+      "split": "validation",
+      "expected": [
+        "contradiction"
+      ],
+      "submission_id": 433,
+      "revision_id": 434,
+      "review_id": 437,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "contradiction"
+      ],
+      "findings": [
+        {
+          "category": "contradiction",
+          "quote": "19 hours",
+          "source_id": 1,
+          "source_title": "Battery life specification",
+          "source_version": 1,
+          "evidence": "Up to 12 hours of battery life.",
+          "explanation": "The numeric claim differs from the approved fact. Review the full statement and its qualifiers.",
+          "suggestion": "up to 12 hours",
+          "severity": "high",
+          "index": 0
+        },
+        {
+          "category": "contradiction",
+          "quote": "Discover 19 hours of battery life.",
+          "source_id": 1,
+          "source_title": "Battery life specification",
+          "source_version": 1,
+          "evidence": "Up to 12 hours of battery life.",
+          "explanation": "The draft claims 19 hours of battery life, which directly contradicts the source specification that states the device offers up to 12 hours. This is a factual inconsistency that must be corrected.",
+          "suggestion": "Revise the claim to reflect the accurate battery life, e.g., \"Discover up to 12 hours of battery life.\"",
+          "severity": "high",
+          "index": 1
+        }
+      ],
+      "error": "",
+      "seconds": 17.32
+    },
+    {
+      "id": "clear_issue-07",
+      "group": "clear_issue",
+      "split": "development",
+      "expected": [
+        "contradiction"
+      ],
+      "submission_id": 439,
+      "revision_id": 440,
+      "review_id": 443,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "contradiction"
+      ],
+      "findings": [
+        {
+          "category": "contradiction",
+          "quote": "30 hours",
+          "source_id": 1,
+          "source_title": "Battery life specification",
+          "source_version": 1,
+          "evidence": "Up to 12 hours of battery life.",
+          "explanation": "The numeric claim differs from the approved fact. Review the full statement and its qualifiers.",
+          "suggestion": "up to 12 hours",
+          "severity": "high",
+          "index": 0
+        },
+        {
+          "category": "contradiction",
+          "quote": "Expect 30 hours of battery life.",
+          "source_id": 1,
+          "source_title": "Battery life specification",
+          "source_version": 1,
+          "evidence": "Up to 12 hours of battery life.",
+          "explanation": "The draft claims 30 hours of battery life, which directly contradicts the source stating the device offers only up to 12 hours. This is a factual inconsistency that must be corrected.",
+          "suggestion": "Revise the statement to reflect the accurate battery life, e.g., \"Up to 12 hours of battery life.\"",
+          "severity": "high",
+          "index": 1
+        }
+      ],
+      "error": "",
+      "seconds": 17.82
+    },
+    {
+      "id": "clear_issue-08",
+      "group": "clear_issue",
+      "split": "validation",
+      "expected": [
+        "contradiction"
+      ],
+      "submission_id": 445,
+      "revision_id": 446,
+      "review_id": 449,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "contradiction"
+      ],
+      "findings": [
+        {
+          "category": "contradiction",
+          "quote": "22 hours",
+          "source_id": 1,
+          "source_title": "Battery life specification",
+          "source_version": 1,
+          "evidence": "Up to 12 hours of battery life.",
+          "explanation": "The numeric claim differs from the approved fact. Review the full statement and its qualifiers.",
+          "suggestion": "up to 12 hours",
+          "severity": "high",
+          "index": 0
+        },
+        {
+          "category": "contradiction",
+          "quote": "Battery life reaches 22 hours.",
+          "source_id": 1,
+          "source_title": "Battery life specification",
+          "source_version": 1,
+          "evidence": "Up to 12 hours of battery life.",
+          "explanation": "The draft claims a battery life of 22 hours, which directly contradicts the source that specifies a maximum of 12 hours. This is a factual inconsistency that must be corrected.",
+          "suggestion": "Adjust the claim to reflect the verified maximum of 12 hours or remove the statement entirely.",
+          "severity": "high",
+          "index": 1
+        }
+      ],
+      "error": "",
+      "seconds": 17.35
+    },
+    {
+      "id": "clear_issue-09",
+      "group": "clear_issue",
+      "split": "development",
+      "expected": [
+        "terminology"
+      ],
+      "submission_id": 451,
+      "revision_id": 452,
+      "review_id": 455,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "messaging",
+        "terminology"
+      ],
+      "findings": [
+        {
+          "category": "terminology",
+          "quote": "NS1",
+          "source_id": 4,
+          "source_title": "Product naming",
+          "source_version": 1,
+          "evidence": "Use Northstar One as the product name.",
+          "explanation": "Use Northstar One as the product name.",
+          "suggestion": "Northstar One",
+          "severity": "medium",
+          "index": 0
+        },
+        {
+          "category": "messaging",
+          "quote": "Meet NS1.",
+          "source_id": 4,
+          "source_title": "Product naming",
+          "source_version": 1,
+          "evidence": "Use Northstar One as the product name.",
+          "explanation": "The draft uses the abbreviation NS1 instead of the full product name Northstar One, which conflicts with the product naming guideline.",
+          "suggestion": "Replace \"NS1\" with \"Northstar One\" in the draft.",
+          "severity": "medium",
+          "index": 1
+        }
+      ],
+      "error": "",
+      "seconds": 17.18
+    },
+    {
+      "id": "clear_issue-10",
+      "group": "clear_issue",
+      "split": "validation",
+      "expected": [
+        "terminology"
+      ],
+      "submission_id": 457,
+      "revision_id": 458,
+      "review_id": 461,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "messaging",
+        "terminology"
+      ],
+      "findings": [
+        {
+          "category": "terminology",
+          "quote": "NS1",
+          "source_id": 4,
+          "source_title": "Product naming",
+          "source_version": 1,
+          "evidence": "Use Northstar One as the product name.",
+          "explanation": "Use Northstar One as the product name.",
+          "suggestion": "Northstar One",
+          "severity": "medium",
+          "index": 0
+        },
+        {
+          "category": "messaging",
+          "quote": "Explore NS1 today.",
+          "source_id": 4,
+          "source_title": "Product naming",
+          "source_version": 1,
+          "evidence": "Use Northstar One as the product name.",
+          "explanation": "The draft uses the abbreviation NS1, but brand guidelines require the full product name Northstar One.",
+          "suggestion": "Replace \"NS1\" with \"Northstar One\" in the draft.",
+          "severity": "high",
+          "index": 1
+        }
+      ],
+      "error": "",
+      "seconds": 18.47
+    },
+    {
+      "id": "clear_issue-11",
+      "group": "clear_issue",
+      "split": "development",
+      "expected": [
+        "terminology"
+      ],
+      "submission_id": 463,
+      "revision_id": 464,
+      "review_id": 467,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "contradiction",
+        "terminology"
+      ],
+      "findings": [
+        {
+          "category": "terminology",
+          "quote": "NS1",
+          "source_id": 4,
+          "source_title": "Product naming",
+          "source_version": 1,
+          "evidence": "Use Northstar One as the product name.",
+          "explanation": "Use Northstar One as the product name.",
+          "suggestion": "Northstar One",
+          "severity": "medium",
+          "index": 0
+        },
+        {
+          "category": "contradiction",
+          "quote": "Choose NS1 for your next launch.",
+          "source_id": 4,
+          "source_title": "Product naming",
+          "source_version": 1,
+          "evidence": "Use Northstar One as the product name.",
+          "explanation": "The draft uses the abbreviation NS1, whereas the brand guideline requires the full product name Northstar One.",
+          "suggestion": "Replace 'NS1' with 'Northstar One' in the draft.",
+          "severity": "high",
+          "index": 1
+        }
+      ],
+      "error": "",
+      "seconds": 17.89
+    },
+    {
+      "id": "clear_issue-12",
+      "group": "clear_issue",
+      "split": "validation",
+      "expected": [
+        "terminology"
+      ],
+      "submission_id": 469,
+      "revision_id": 470,
+      "review_id": 473,
+      "status": "incomplete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "failed"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "terminology"
+      ],
+      "findings": [
+        {
+          "category": "terminology",
+          "quote": "NS1",
+          "source_id": 4,
+          "source_title": "Product naming",
+          "source_version": 1,
+          "evidence": "Use Northstar One as the product name.",
+          "explanation": "Use Northstar One as the product name.",
+          "suggestion": "Northstar One",
+          "severity": "medium",
+          "index": 0
+        }
+      ],
+      "error": "The AI response could not be validated against the draft and approved sources. Please retry. [AI_INVALID_RESPONSE] This review remains incomplete.",
+      "seconds": 18.45
+    },
+    {
+      "id": "clear_issue-13",
+      "group": "clear_issue",
+      "split": "development",
+      "expected": [
+        "terminology"
+      ],
+      "submission_id": 475,
+      "revision_id": 476,
+      "review_id": 479,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "contradiction",
+        "terminology"
+      ],
+      "findings": [
+        {
+          "category": "terminology",
+          "quote": "NS1",
+          "source_id": 4,
+          "source_title": "Product naming",
+          "source_version": 1,
+          "evidence": "Use Northstar One as the product name.",
+          "explanation": "Use Northstar One as the product name.",
+          "suggestion": "Northstar One",
+          "severity": "medium",
+          "index": 0
+        },
+        {
+          "category": "contradiction",
+          "quote": "Discover NS1 in store.",
+          "source_id": 4,
+          "source_title": "Product naming",
+          "source_version": 1,
+          "evidence": "Use Northstar One as the product name.",
+          "explanation": "The draft references the product as \"NS1\", which conflicts with the brand guideline that specifies the product name should be \"Northstar One\". This inconsistency violates the naming rule and could confuse customers.",
+          "suggestion": "Replace \"NS1\" with \"Northstar One\" in the draft, e.g., \"Discover Northstar One in store.\"",
+          "severity": "high",
+          "index": 1
+        }
+      ],
+      "error": "",
+      "seconds": 17.48
+    },
+    {
+      "id": "clear_issue-14",
+      "group": "clear_issue",
+      "split": "validation",
+      "expected": [
+        "terminology"
+      ],
+      "submission_id": 481,
+      "revision_id": 482,
+      "review_id": 485,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "contradiction",
+        "terminology"
+      ],
+      "findings": [
+        {
+          "category": "terminology",
+          "quote": "NS1",
+          "source_id": 4,
+          "source_title": "Product naming",
+          "source_version": 1,
+          "evidence": "Use Northstar One as the product name.",
+          "explanation": "Use Northstar One as the product name.",
+          "suggestion": "Northstar One",
+          "severity": "medium",
+          "index": 0
+        },
+        {
+          "category": "contradiction",
+          "quote": "Learn more about NS1.",
+          "source_id": 4,
+          "source_title": "Product naming",
+          "source_version": 1,
+          "evidence": "Use Northstar One as the product name.",
+          "explanation": "The draft references the product as NS1, which conflicts with the naming rule that requires the full product name Northstar One.",
+          "suggestion": "Replace \"NS1\" with \"Northstar One\" in the draft.",
+          "severity": "high",
+          "index": 1
+        }
+      ],
+      "error": "",
+      "seconds": 18.67
+    },
+    {
+      "id": "clear_issue-15",
+      "group": "clear_issue",
+      "split": "development",
+      "expected": [
+        "unsupported_claim"
+      ],
+      "submission_id": 487,
+      "revision_id": 488,
+      "review_id": 491,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "unsupported_claim"
+      ],
+      "findings": [
+        {
+          "category": "unsupported_claim",
+          "quote": "India's No. 1",
+          "source_id": 3,
+          "source_title": "Ranking claims policy ASCII",
+          "source_version": 1,
+          "evidence": "Ranking claims require current approved substantiation. No approved ranking evidence exists for this demo.",
+          "explanation": "Ranking claims require current approved substantiation. No approved ranking evidence exists for this demo.",
+          "suggestion": "",
+          "severity": "high",
+          "index": 0
+        },
+        {
+          "category": "unsupported_claim",
+          "quote": "India's No. 1 device.",
+          "source_id": 2,
+          "source_title": "Ranking claims policy",
+          "source_version": 1,
+          "evidence": "Ranking claims require current approved substantiation. No approved ranking evidence exists for this demo.",
+          "explanation": "The draft makes a ranking claim that the device is India's No. 1, but the policy sources state that no approved ranking evidence exists for this demo, making the claim unsupported.",
+          "suggestion": "Remove the ranking claim or provide current approved substantiation before using it.",
+          "severity": "high",
+          "index": 1
+        }
+      ],
+      "error": "",
+      "seconds": 17.58
+    },
+    {
+      "id": "clear_issue-16",
+      "group": "clear_issue",
+      "split": "validation",
+      "expected": [
+        "unsupported_claim"
+      ],
+      "submission_id": 493,
+      "revision_id": 494,
+      "review_id": 497,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "unsupported_claim"
+      ],
+      "findings": [
+        {
+          "category": "unsupported_claim",
+          "quote": "Meet the No. 1 choice.",
+          "source_id": 2,
+          "source_title": "Ranking claims policy",
+          "source_version": 1,
+          "evidence": "Ranking claims require current approved substantiation. No approved ranking evidence exists for this demo.",
+          "explanation": "The draft contains a ranking claim (\u201cNo. 1 choice\u201d) without any approved evidence, violating the ranking claims policy.",
+          "suggestion": "Remove the ranking claim or provide current approved substantiation before using it.",
+          "severity": "high",
+          "index": 0
+        }
+      ],
+      "error": "",
+      "seconds": 18.01
+    },
+    {
+      "id": "clear_issue-17",
+      "group": "clear_issue",
+      "split": "development",
+      "expected": [
+        "unsupported_claim"
+      ],
+      "submission_id": 499,
+      "revision_id": 500,
+      "review_id": 503,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "messaging",
+        "unsupported_claim"
+      ],
+      "findings": [
+        {
+          "category": "unsupported_claim",
+          "quote": "Our No. 1 device is here.",
+          "source_id": 2,
+          "source_title": "Ranking claims policy",
+          "source_version": 1,
+          "evidence": "Ranking claims require current approved substantiation. No approved ranking evidence exists for this demo.",
+          "explanation": "The draft makes a ranking claim (\u2018No. 1 device\u2019) without any approved evidence, violating the ranking claims policy.",
+          "suggestion": "Remove the ranking claim or provide approved substantiation before using it.",
+          "severity": "high",
+          "index": 0
+        },
+        {
+          "category": "messaging",
+          "quote": "Our No. 1 device is here.",
+          "source_id": 4,
+          "source_title": "Product naming",
+          "source_version": 1,
+          "evidence": "Use Northstar One as the product name.",
+          "explanation": "The draft does not reference the product name \u2018Northstar One\u2019, which is required for the announcement.",
+          "suggestion": "Replace \u2018device\u2019 with \u2018Northstar One\u2019 to align with the product naming policy.",
+          "severity": "medium",
+          "index": 1
+        }
+      ],
+      "error": "",
+      "seconds": 18.91
+    },
+    {
+      "id": "clear_issue-18",
+      "group": "clear_issue",
+      "split": "validation",
+      "expected": [
+        "unsupported_claim"
+      ],
+      "submission_id": 505,
+      "revision_id": 506,
+      "review_id": 509,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "messaging",
+        "unsupported_claim"
+      ],
+      "findings": [
+        {
+          "category": "unsupported_claim",
+          "quote": "Choose the No. 1 product.",
+          "source_id": 2,
+          "source_title": "Ranking claims policy",
+          "source_version": 1,
+          "evidence": "Ranking claims require current approved substantiation. No approved ranking evidence exists for this demo.",
+          "explanation": "The draft makes a ranking claim (\u201cNo. 1 product\u201d) without any approved evidence, violating the ranking claims policy.",
+          "suggestion": "Remove the ranking claim or provide approved substantiation before using it.",
+          "severity": "high",
+          "index": 0
+        },
+        {
+          "category": "messaging",
+          "quote": "Choose the No. 1 product.",
+          "source_id": 4,
+          "source_title": "Product naming",
+          "source_version": 1,
+          "evidence": "Use Northstar One as the product name.",
+          "explanation": "The draft does not reference the required product name \u201cNorthstar One\u201d, which may confuse the audience and dilute brand consistency.",
+          "suggestion": "Include the product name in the announcement, e.g., \u201cChoose Northstar One.\u201d",
+          "severity": "low",
+          "index": 1
+        }
+      ],
+      "error": "",
+      "seconds": 18.04
+    },
+    {
+      "id": "clear_issue-19",
+      "group": "clear_issue",
+      "split": "development",
+      "expected": [
+        "unsupported_claim"
+      ],
+      "submission_id": 511,
+      "revision_id": 512,
+      "review_id": 515,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "messaging",
+        "tone",
+        "unsupported_claim"
+      ],
+      "findings": [
+        {
+          "category": "unsupported_claim",
+          "quote": "The No. 1 launch today.",
+          "source_id": 2,
+          "source_title": "Ranking claims policy",
+          "source_version": 1,
+          "evidence": "Ranking claims require current approved substantiation. No approved ranking evidence exists for this demo.",
+          "explanation": "The draft includes the ranking claim \"No. 1\" without any approved evidence, violating the ranking claims policy.",
+          "suggestion": "Remove the ranking claim or provide approved substantiation before using it.",
+          "severity": "high",
+          "index": 0
+        },
+        {
+          "category": "tone",
+          "quote": "The No. 1 launch today.",
+          "source_id": 5,
+          "source_title": "Voice and tone",
+          "source_version": 1,
+          "evidence": "Use clear, helpful language. Avoid exaggerated urgency, intimidation and insults.",
+          "explanation": "The phrase \"No. 1 launch today\" conveys an urgent tone that may be considered exaggerated urgency.",
+          "suggestion": "Rephrase to \"Launch today\" or \"Launch soon\" to maintain a calm, helpful tone.",
+          "severity": "medium",
+          "index": 1
+        },
+        {
+          "category": "messaging",
+          "quote": "The No. 1 launch today.",
+          "source_id": 4,
+          "source_title": "Product naming",
+          "source_version": 1,
+          "evidence": "Use Northstar One as the product name.",
+          "explanation": "The draft does not mention the product name \"Northstar One\", which is required for clear messaging.",
+          "suggestion": "Include the product name, e.g., \"Northstar One launch today.\"",
+          "severity": "low",
+          "index": 2
+        }
+      ],
+      "error": "",
+      "seconds": 18.15
+    },
+    {
+      "id": "clear_issue-20",
+      "group": "clear_issue",
+      "split": "validation",
+      "expected": [
+        "unsupported_claim"
+      ],
+      "submission_id": 517,
+      "revision_id": 518,
+      "review_id": 521,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "messaging",
+        "unsupported_claim"
+      ],
+      "findings": [
+        {
+          "category": "unsupported_claim",
+          "quote": "Discover the No. 1 device.",
+          "source_id": 2,
+          "source_title": "Ranking claims policy",
+          "source_version": 1,
+          "evidence": "Ranking claims require current approved substantiation. No approved ranking evidence exists for this demo.",
+          "explanation": "The draft makes a ranking claim that the device is No. 1, but no approved evidence is provided.",
+          "suggestion": "Remove the ranking claim or provide substantiation.",
+          "severity": "high",
+          "index": 0
+        },
+        {
+          "category": "messaging",
+          "quote": "Discover the No. 1 device.",
+          "source_id": 4,
+          "source_title": "Product naming",
+          "source_version": 1,
+          "evidence": "Use Northstar One as the product name.",
+          "explanation": "The draft does not reference the product name Northstar One, which is required for the announcement.",
+          "suggestion": "Include the product name in the copy, e.g., 'Discover the No. 1 device, Northstar One.'",
+          "severity": "medium",
+          "index": 1
+        }
+      ],
+      "error": "",
+      "seconds": 19.49
+    },
+    {
+      "id": "ambiguous-01",
+      "group": "ambiguous",
+      "split": "development",
+      "expected": [],
+      "submission_id": 523,
+      "revision_id": 524,
+      "review_id": 527,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "contradiction"
+      ],
+      "findings": [
+        {
+          "category": "contradiction",
+          "quote": "A battery that keeps going all day.",
+          "source_id": 1,
+          "source_title": "Battery life specification",
+          "source_version": 1,
+          "evidence": "Up to 12 hours of battery life.",
+          "explanation": "The draft claims the battery lasts all day (24+ hours), but the specification states only up to 12 hours.",
+          "suggestion": "Rephrase to reflect the 12\u2011hour battery life, e.g., \"Up to 12 hours of battery life.\"",
+          "severity": "high",
+          "index": 0
+        }
+      ],
+      "error": "",
+      "seconds": 17.28
+    },
+    {
+      "id": "ambiguous-02",
+      "group": "ambiguous",
+      "split": "validation",
+      "expected": [],
+      "submission_id": 529,
+      "revision_id": 530,
+      "review_id": 533,
+      "status": "incomplete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "failed"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [],
+      "findings": [],
+      "error": "The AI response could not be validated against the draft and approved sources. Please retry. [AI_INVALID_RESPONSE] This review remains incomplete.",
+      "seconds": 18.27
+    },
+    {
+      "id": "ambiguous-03",
+      "group": "ambiguous",
+      "split": "development",
+      "expected": [],
+      "submission_id": 535,
+      "revision_id": 536,
+      "review_id": 539,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "messaging"
+      ],
+      "findings": [
+        {
+          "category": "messaging",
+          "quote": "Enjoy 12 hours of battery life.",
+          "source_id": 4,
+          "source_title": "Product naming",
+          "source_version": 1,
+          "evidence": "Use Northstar One as the product name.",
+          "explanation": "The draft does not reference the product name, which is required by the product naming source.",
+          "suggestion": "Include the product name, e.g., \"Enjoy 12 hours of battery life on the Northstar One.\"",
+          "severity": "low",
+          "index": 0
+        }
+      ],
+      "error": "",
+      "seconds": 17.16
+    },
+    {
+      "id": "ambiguous-04",
+      "group": "ambiguous",
+      "split": "validation",
+      "expected": [],
+      "submission_id": 541,
+      "revision_id": 542,
+      "review_id": 545,
+      "status": "incomplete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "failed"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [],
+      "findings": [],
+      "error": "The AI response could not be validated against the draft and approved sources. Please retry. [AI_INVALID_RESPONSE] This review remains incomplete.",
+      "seconds": 17.51
+    },
+    {
+      "id": "ambiguous-05",
+      "group": "ambiguous",
+      "split": "development",
+      "expected": [],
+      "submission_id": 547,
+      "revision_id": 548,
+      "review_id": 551,
+      "status": "incomplete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "failed"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [],
+      "findings": [],
+      "error": "The AI response could not be validated against the draft and approved sources. Please retry. [AI_INVALID_RESPONSE] This review remains incomplete.",
+      "seconds": 17.7
+    },
+    {
+      "id": "ambiguous-06",
+      "group": "ambiguous",
+      "split": "validation",
+      "expected": [],
+      "submission_id": 553,
+      "revision_id": 554,
+      "review_id": 557,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "messaging"
+      ],
+      "findings": [
+        {
+          "category": "messaging",
+          "quote": "Battery life depends on usage.",
+          "source_id": 4,
+          "source_title": "Product naming",
+          "source_version": 1,
+          "evidence": "Use Northstar One as the product name.",
+          "explanation": "The draft does not mention the product name, which is required for an announcement of the Northstar One.",
+          "suggestion": "Include the product name \"Northstar One\" in the announcement, e.g., \"Battery life of the Northstar One depends on usage.\"",
+          "severity": "medium",
+          "index": 0
+        }
+      ],
+      "error": "",
+      "seconds": 17.8
+    },
+    {
+      "id": "ambiguous-07",
+      "group": "ambiguous",
+      "split": "development",
+      "expected": [],
+      "submission_id": 559,
+      "revision_id": 560,
+      "review_id": 563,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "unsupported_claim"
+      ],
+      "findings": [
+        {
+          "category": "unsupported_claim",
+          "quote": "this is No. 1.",
+          "source_id": 2,
+          "source_title": "Ranking claims policy",
+          "source_version": 1,
+          "evidence": "Ranking claims require current approved substantiation. No approved ranking evidence exists for this demo.",
+          "explanation": "The draft contains a ranking claim (\u201cNo. 1\u201d) without any approved evidence, violating the ranking claims policy.",
+          "suggestion": "Remove the ranking claim or provide current approved substantiation before using it.",
+          "severity": "high",
+          "index": 0
+        }
+      ],
+      "error": "",
+      "seconds": 17.67
+    },
+    {
+      "id": "ambiguous-08",
+      "group": "ambiguous",
+      "split": "validation",
+      "expected": [],
+      "submission_id": 565,
+      "revision_id": 566,
+      "review_id": 569,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "contradiction",
+        "terminology"
+      ],
+      "findings": [
+        {
+          "category": "terminology",
+          "quote": "NS1",
+          "source_id": 4,
+          "source_title": "Product naming",
+          "source_version": 1,
+          "evidence": "Use Northstar One as the product name.",
+          "explanation": "Use Northstar One as the product name.",
+          "suggestion": "Northstar One",
+          "severity": "medium",
+          "index": 0
+        },
+        {
+          "category": "contradiction",
+          "quote": "Do not call the device NS1.",
+          "source_id": 4,
+          "source_title": "Product naming",
+          "source_version": 1,
+          "evidence": "Use Northstar One as the product name.",
+          "explanation": "The draft explicitly instructs not to use the abbreviation NS1, while source 4 mandates that the product be referred to as Northstar One, directly contradicting the source.",
+          "suggestion": "Replace the instruction with a statement that the device should be called Northstar One, or remove the prohibition on NS1 if it is acceptable to use the abbreviation in certain contexts.",
+          "severity": "high",
+          "index": 1
+        }
+      ],
+      "error": "",
+      "seconds": 16.98
+    },
+    {
+      "id": "ambiguous-09",
+      "group": "ambiguous",
+      "split": "development",
+      "expected": [],
+      "submission_id": 571,
+      "revision_id": 572,
+      "review_id": 575,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [
+        "contradiction",
+        "unsupported_claim"
+      ],
+      "findings": [
+        {
+          "category": "contradiction",
+          "quote": "20 hours",
+          "source_id": 1,
+          "source_title": "Battery life specification",
+          "source_version": 1,
+          "evidence": "Up to 12 hours of battery life.",
+          "explanation": "The numeric claim differs from the approved fact. Review the full statement and its qualifiers.",
+          "suggestion": "up to 12 hours",
+          "severity": "high",
+          "index": 0
+        },
+        {
+          "category": "unsupported_claim",
+          "quote": "Could battery life reach 20 hours?",
+          "source_id": 1,
+          "source_title": "Battery life specification",
+          "source_version": 1,
+          "evidence": "Up to 12 hours of battery life.",
+          "explanation": "The source states the battery life is up to 12 hours, so a claim of 20 hours is not supported by the provided evidence.",
+          "suggestion": "Rephrase the statement to reflect the actual battery life (e.g., \"Battery life is up to 12 hours.\") or remove the claim.",
+          "severity": "high",
+          "index": 1
+        }
+      ],
+      "error": "",
+      "seconds": 17.4
+    },
+    {
+      "id": "ambiguous-10",
+      "group": "ambiguous",
+      "split": "validation",
+      "expected": [],
+      "submission_id": 577,
+      "revision_id": 578,
+      "review_id": 581,
+      "status": "complete",
+      "checks": {
+        "rules": "complete",
+        "semantic": "complete"
+      },
+      "model": "openai/gpt-oss-20b",
+      "predicted": [],
+      "findings": [],
+      "error": "",
+      "seconds": 17.3
+    }
+  ],
+  "release": {
+    "status": "ok",
+    "release": "round3-finish",
+    "commit": "d5e50dc5d67bf1ef8d0e139e6e9531c7cc901906"
+  },
+  "configuration": {
+    "email": "creator@brandproof.demo",
+    "role": "creator",
+    "org": "northstar",
+    "review_mode": "ai",
+    "ai_provider": "Groq"
+  },
+  "finished_at": "2026-10-30T02:29:10.099183+00:00",
+  "categories": {
+    "messaging": {
+      "tp": 0,
+      "fp": 10,
+      "fn": 0,
+      "precision": 0.0,
+      "recall": null
+    },
+    "contradiction": {
+      "tp": 8,
+      "fp": 3,
+      "fn": 0,
+      "precision": 0.7272727272727273,
+      "recall": 1.0
+    },
+    "terminology": {
+      "tp": 5,
+      "fp": 0,
+      "fn": 1,
+      "precision": 1.0,
+      "recall": 0.8333333333333334
+    },
+    "unsupported_claim": {
+      "tp": 6,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    "tone": {
+      "tp": 0,
+      "fp": 1,
+      "fn": 0,
+      "precision": 0.0,
+      "recall": null
+    }
+  },
+  "overall": {
+    "tp": 19,
+    "fp": 14,
+    "fn": 1,
+    "precision": 0.5757575757575758,
+    "recall": 0.95
+  },
+  "complete": 36,
+  "incomplete": 4,
+  "control_false_alarms": 3
+}

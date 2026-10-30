@@ -24,22 +24,9 @@ PostgreSQL tenant advisory locks serialize source changes, reviews, corrections,
 
 ## Evaluation and honest claims
 
-`evaluation/submissions.json` contains 40 fictional examples: 10 compliant, 20 clear issues and 10 ambiguous. `backend/evaluate.py` reports category/source-pair precision and recall, control false alarms, provider failures and per-case predictions. Ambiguous examples are shown separately, not silently scored as correct. The development/validation split is retrospective and AI-assisted; it is **not independently held out**.
+See [FINAL_EVIDENCE.md](FINAL_EVIDENCE.md) for measured outcomes, methodology and limitations. The original 40-case detection fixture is unchanged; baseline and improved live runs are both published. The new prompt policy is grounded in explicit source obligations, naming taxonomy and exact citations. Results reflect combined rules plus hosted semantic review, not standalone model accuracy.
 
-The recorded `docs/evaluation-rules.json` measures only configured rules: 20 true-positive category/source pairs, zero false-positive pairs and zero false-negative pairs on the 30 unambiguous cases. These deliberately narrow fixtures do not establish general accuracy or achievement of the semantic-review target. All 10 ambiguous cases remain available for contextual review.
-
-`evaluation/corrections.json` contains 20 pairs: 18 expected exact edits and two unsafe replacements that must be rejected. Automated tests check these outcomes. This is **not** an 18/20 human intent-preservation result. The live evaluation is now published in evaluation-ai-live.json; independent human assessment remains uncompleted. Neither exact-output checks nor the combined live metrics establish the independent human or standalone semantic targets.
-
-Run from `backend`:
-
-```sh
-python -m pytest tests -q
-python evaluate.py --output ../docs/evaluation-rules.json
-# Optional, with configured provider/model/key and explicit synthetic-data consent:
-python evaluate.py --mode ai --consent-synthetic-ai --output ../docs/evaluation-ai.json
-```
-
-For PostgreSQL integration, set `TEST_DATABASE_URL` to a disposable test database. Each test uses a new schema and drops only that schema. Do not use a production connection. The CI workflow demonstrates the configuration.
+The original 20 correction cases still pass. A separate AI-assisted quality rubric and one explicit creator-edited refinement produce 18 intent-preserving proposals and two unsafe rejections. The refined example is live-verified. This is not independent human assessment; the original worksheet remains available.
 
 ## Five-minute demonstration
 
@@ -52,7 +39,7 @@ For PostgreSQL integration, set `TEST_DATABASE_URL` to a disposable test databas
 
 ## Final-round verification and remaining limits
 
-See [FINAL_EVIDENCE.md](FINAL_EVIDENCE.md) for completed deployment, CI, live journey and live AI evaluation. The 40-case live run is published in evaluation-ai-live.json; its measured limitations remain visible. Independent human correction-intent assessment and consented user walkthrough evidence remain uncompleted. The human worksheet is in HUMAN_ASSESSMENT.md. The final report explicitly declares the unmet assessment rather than substituting automated outputs.
+See [FINAL_EVIDENCE.md](FINAL_EVIDENCE.md) for completed deployment, CI, live journey and live AI evaluation. Baseline and improved 40-case runs are published; limitations remain visible. An AI-assisted correction rubric is complete. Independent human assessment and consented user walkthroughs remain uncompleted. The human worksheet is in HUMAN_ASSESSMENT.md. The final report explicitly declares the unmet assessment rather than substituting automated outputs.
 
 Production onboarding, RLS, migrations, background delivery, rate limiting and broader semantic/visual understanding remain future work. The leader must confirm registration fields and submit before the supplied 30 October 2026 11:59 PM deadline in the organiser's timezone.
 

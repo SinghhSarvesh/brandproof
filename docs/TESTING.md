@@ -15,3 +15,5 @@ The 20 correction pairs comprise 18 expected edits and two expected rejections. 
 ## Recorded final release
 
 See [FINAL_EVIDENCE.md](FINAL_EVIDENCE.md) for observed counts, live release ID, evaluation results and honest limitations.
+
+The improved application CI and new live results are in FINAL_EVIDENCE.md. Original fixture files are unchanged; both live result sets and the refined correction assessment are preserved.

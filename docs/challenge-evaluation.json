@@ -1,0 +1,130 @@
+{
+  "started_at": "2026-10-30T07:22:32.469132+00:00",
+  "disclosure": "Six additional AI-authored challenge cases labelled before this run, after policy design. Not an independent blind study. No subsequent tuning on these outputs.",
+  "cases": [
+    {
+      "id": "benign-today",
+      "text": "Read the launch details today.",
+      "expected": [],
+      "predicted": [],
+      "status": "complete",
+      "passed": true,
+      "findings": [],
+      "error": "",
+      "submission_id": 736
+    },
+    {
+      "id": "generic-reference",
+      "text": "Find out more about the product.",
+      "expected": [],
+      "predicted": [],
+      "status": "complete",
+      "passed": true,
+      "findings": [],
+      "error": "",
+      "submission_id": 752
+    },
+    {
+      "id": "abusive-tone",
+      "text": "Buy now, idiot, or you deserve to suffer.",
+      "expected": [
+        "tone"
+      ],
+      "predicted": [
+        "tone"
+      ],
+      "status": "complete",
+      "passed": true,
+      "findings": [
+        {
+          "category": "tone",
+          "quote": "idiot, or you deserve to suffer",
+          "source_id": 5,
+          "source_title": "Voice and tone",
+          "source_version": 1,
+          "evidence": "Avoid exaggerated urgency, intimidation and insults",
+          "explanation": "The draft contains insulting language (\u201cidiot, or you deserve to suffer\u201d), which violates the tone rule that requires avoiding intimidation and insults.",
+          "suggestion": "valued customer, you deserve to succeed",
+          "severity": "high",
+          "index": 0
+        }
+      ],
+      "error": "",
+      "submission_id": 764
+    },
+    {
+      "id": "battery-paraphrase",
+      "text": "The battery will run for a full day without charging.",
+      "expected": [
+        "contradiction"
+      ],
+      "predicted": [
+        "contradiction"
+      ],
+      "status": "complete",
+      "passed": true,
+      "findings": [
+        {
+          "category": "contradiction",
+          "quote": "full day",
+          "source_id": 1,
+          "source_title": "Battery life specification",
+          "source_version": 1,
+          "evidence": "Up to 12 hours of battery life.",
+          "explanation": "The draft claims the battery will run for a full day (24 hours), which contradicts the fact that the battery life is up to 12 hours.",
+          "suggestion": "up to 12 hours",
+          "severity": "high",
+          "index": 0
+        }
+      ],
+      "error": "",
+      "submission_id": 776
+    },
+    {
+      "id": "lost-qualifier",
+      "text": "Northstar One guarantees 12 hours of battery life.",
+      "expected": [
+        "contradiction"
+      ],
+      "predicted": [
+        "contradiction"
+      ],
+      "status": "complete",
+      "passed": true,
+      "findings": [
+        {
+          "category": "contradiction",
+          "quote": "Northstar One guarantees 12 hours of battery life.",
+          "source_id": 1,
+          "source_title": "Battery life specification",
+          "source_version": 1,
+          "evidence": "Up to 12 hours of battery life.",
+          "explanation": "The fact states the battery life is up to 12 hours, not guaranteed. The draft claims a guarantee, which contradicts the fact.",
+          "suggestion": "Northstar One offers up to 12 hours of battery life.",
+          "severity": "medium",
+          "index": 0
+        }
+      ],
+      "error": "",
+      "submission_id": 784
+    },
+    {
+      "id": "approved-name",
+      "text": "Discover Northstar One today.",
+      "expected": [],
+      "predicted": [],
+      "status": "complete",
+      "passed": true,
+      "findings": [],
+      "error": "",
+      "submission_id": 796
+    }
+  ],
+  "release": {
+    "status": "ok",
+    "release": "round3-finish",
+    "commit": "4503217e8cf6fbf44cf70011dff4a49afb429e8f"
+  },
+  "passed": 6,
+  "total": 6
+}

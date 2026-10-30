@@ -1,0 +1,183 @@
+{
+  "assessed_at": "2026-10-30T07:19:30.902029+00:00",
+  "assessor": "ChatGPT/Codex, AI-assisted review; not independent human assessment",
+  "rubric": [
+    "Retain product-announcement purpose and call to action",
+    "Use approved product fact/name where relevant",
+    "Introduce no unsupported new claim",
+    "Preserve grammatical object when removing a ranking"
+  ],
+  "cases": [
+    {
+      "id": "numeric-1",
+      "before": "Launch 1: enjoy 20 hours of battery life.",
+      "replacement": "up to 12 hours",
+      "after": "Launch 1: enjoy up to 12 hours of battery life.",
+      "outcome": "preserves_intent",
+      "reason": "Retains launch and battery-benefit message while replacing only the unsupported duration with the approved qualified limit."
+    },
+    {
+      "id": "numeric-2",
+      "before": "Launch 2: enjoy 21 hours of battery life.",
+      "replacement": "up to 12 hours",
+      "after": "Launch 2: enjoy up to 12 hours of battery life.",
+      "outcome": "preserves_intent",
+      "reason": "Retains launch and battery-benefit message while replacing only the unsupported duration with the approved qualified limit."
+    },
+    {
+      "id": "numeric-3",
+      "before": "Launch 3: enjoy 22 hours of battery life.",
+      "replacement": "up to 12 hours",
+      "after": "Launch 3: enjoy up to 12 hours of battery life.",
+      "outcome": "preserves_intent",
+      "reason": "Retains launch and battery-benefit message while replacing only the unsupported duration with the approved qualified limit."
+    },
+    {
+      "id": "numeric-4",
+      "before": "Launch 4: enjoy 23 hours of battery life.",
+      "replacement": "up to 12 hours",
+      "after": "Launch 4: enjoy up to 12 hours of battery life.",
+      "outcome": "preserves_intent",
+      "reason": "Retains launch and battery-benefit message while replacing only the unsupported duration with the approved qualified limit."
+    },
+    {
+      "id": "numeric-5",
+      "before": "Launch 5: enjoy 24 hours of battery life.",
+      "replacement": "up to 12 hours",
+      "after": "Launch 5: enjoy up to 12 hours of battery life.",
+      "outcome": "preserves_intent",
+      "reason": "Retains launch and battery-benefit message while replacing only the unsupported duration with the approved qualified limit."
+    },
+    {
+      "id": "numeric-6",
+      "before": "Launch 6: enjoy 25 hours of battery life.",
+      "replacement": "up to 12 hours",
+      "after": "Launch 6: enjoy up to 12 hours of battery life.",
+      "outcome": "preserves_intent",
+      "reason": "Retains launch and battery-benefit message while replacing only the unsupported duration with the approved qualified limit."
+    },
+    {
+      "id": "numeric-7",
+      "before": "Launch 7: enjoy 26 hours of battery life.",
+      "replacement": "up to 12 hours",
+      "after": "Launch 7: enjoy up to 12 hours of battery life.",
+      "outcome": "preserves_intent",
+      "reason": "Retains launch and battery-benefit message while replacing only the unsupported duration with the approved qualified limit."
+    },
+    {
+      "id": "numeric-8",
+      "before": "Launch 8: enjoy 27 hours of battery life.",
+      "replacement": "up to 12 hours",
+      "after": "Launch 8: enjoy up to 12 hours of battery life.",
+      "outcome": "preserves_intent",
+      "reason": "Retains launch and battery-benefit message while replacing only the unsupported duration with the approved qualified limit."
+    },
+    {
+      "id": "numeric-9",
+      "before": "Launch 9: enjoy 28 hours of battery life.",
+      "replacement": "up to 12 hours",
+      "after": "Launch 9: enjoy up to 12 hours of battery life.",
+      "outcome": "preserves_intent",
+      "reason": "Retains launch and battery-benefit message while replacing only the unsupported duration with the approved qualified limit."
+    },
+    {
+      "id": "numeric-10",
+      "before": "Launch 10: enjoy 29 hours of battery life.",
+      "replacement": "up to 12 hours",
+      "after": "Launch 10: enjoy up to 12 hours of battery life.",
+      "outcome": "preserves_intent",
+      "reason": "Retains launch and battery-benefit message while replacing only the unsupported duration with the approved qualified limit."
+    },
+    {
+      "id": "name-1",
+      "before": "Meet NS1.",
+      "replacement": "Northstar One",
+      "after": "Meet Northstar One.",
+      "outcome": "preserves_intent",
+      "reason": "Retains action and product referent; expands the deprecated short name to its approved name."
+    },
+    {
+      "id": "name-2",
+      "before": "Discover NS1 today.",
+      "replacement": "Northstar One",
+      "after": "Discover Northstar One today.",
+      "outcome": "preserves_intent",
+      "reason": "Retains action and product referent; expands the deprecated short name to its approved name."
+    },
+    {
+      "id": "name-3",
+      "before": "Explore NS1.",
+      "replacement": "Northstar One",
+      "after": "Explore Northstar One.",
+      "outcome": "preserves_intent",
+      "reason": "Retains action and product referent; expands the deprecated short name to its approved name."
+    },
+    {
+      "id": "name-4",
+      "before": "Launch NS1 now.",
+      "replacement": "Northstar One",
+      "after": "Launch Northstar One now.",
+      "outcome": "preserves_intent",
+      "reason": "Retains action and product referent; expands the deprecated short name to its approved name."
+    },
+    {
+      "id": "name-5",
+      "before": "Choose NS1.",
+      "replacement": "Northstar One",
+      "after": "Choose Northstar One.",
+      "outcome": "preserves_intent",
+      "reason": "Retains action and product referent; expands the deprecated short name to its approved name."
+    },
+    {
+      "id": "remove-1",
+      "before": "Our No. 1 device.",
+      "replacement": "",
+      "after": "Our  device.",
+      "outcome": "preserves_intent",
+      "reason": "Retains product and call to action while removing the unsupported ranking. Double spaces in two literal-span outputs are cosmetic."
+    },
+    {
+      "id": "remove-2",
+      "before": "Meet the No. 1 product.",
+      "replacement": "",
+      "after": "Meet the  product.",
+      "outcome": "preserves_intent",
+      "reason": "Retains product and call to action while removing the unsupported ranking. Double spaces in two literal-span outputs are cosmetic."
+    },
+    {
+      "id": "remove-3",
+      "before": "Choose No. 1 today.",
+      "replacement": "the product",
+      "after": "Choose the product today.",
+      "original_after": "Choose  today.",
+      "refinement": "The original deletion lost the object of Choose. An explicit edited replacement retains it.",
+      "outcome": "preserves_intent",
+      "reason": "Retains product and call to action while removing the unsupported ranking. Double spaces in two literal-span outputs are cosmetic."
+    },
+    {
+      "id": "unsafe-1",
+      "before": "Enjoy 20 hours of battery life.",
+      "replacement": "up to 99 hours",
+      "after": null,
+      "outcome": "reject_unsafe",
+      "reason": "Unsupported number or removed qualifying language; blocking the edit is correct."
+    },
+    {
+      "id": "unsafe-2",
+      "before": "Enjoy 20 hours of battery life.",
+      "replacement": "12 hours",
+      "after": null,
+      "outcome": "reject_unsafe",
+      "reason": "Unsupported number or removed qualifying language; blocking the edit is correct."
+    }
+  ],
+  "refined_live_check": {
+    "passed": true,
+    "submission_id": 633,
+    "revision_id": 653
+  },
+  "preserves_intent": 18,
+  "unsafe_rejected": 2,
+  "independent_human_validation": false,
+  "disclosure": "Original 20-case fixture unchanged. One deletion proposal was refined via the existing editable-replacement flow and verified live. Quality ratings are AI-assisted qualitative assessments, not blinded human results."
+}
